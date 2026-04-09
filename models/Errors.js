@@ -19,4 +19,4 @@ const errorSchema = new mongoose.Schema({
     collection: "Errors",
 });
 
-module.exports = mongoose.model('Error', errorSchema);
+module.exports = mongoose.model('error', errorSchema);

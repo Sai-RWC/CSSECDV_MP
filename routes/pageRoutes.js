@@ -3,7 +3,7 @@ const router = express.Router();
 const pageController = require('../controllers/pageController');
 
 // index
-router.get('/', pageController.getIndex);
+// router.get('/', pageController.getIndex);
 
 // landing page
 router.get('/landingpage', pageController.getLanding);

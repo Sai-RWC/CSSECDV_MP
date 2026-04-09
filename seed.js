@@ -9,7 +9,7 @@ const LabSchema = require('./models/Labs');
 
 // For loading pre-made data
 const seedDatabase = async () => {
-  await mongoose.connect('mongodb://127.0.0.1:27017/labubuddiesDB');
+  await mongoose.connect('mongodb://127.0.0.1:27017/myapp');
 
   // Clear schema's existing data
   await UserSchema.deleteMany({});
