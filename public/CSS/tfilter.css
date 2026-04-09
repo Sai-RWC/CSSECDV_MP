@@ -1,0 +1,16 @@
+button.submitSearch:disabled {
+  background-color: #9CA3AF;
+  color: #e5e7eb;
+  cursor: not-allowed;
+}
+
+button.submitSearch.active {
+  background-color: #34C578;
+  color: black;
+  cursor: pointer;
+  transition: transform 0.2s ease, background-color 0.2s ease;
+}
+
+button.submitSearch.active:hover {
+    transform: scale(1.05);
+}

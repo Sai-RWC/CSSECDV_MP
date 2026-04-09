@@ -1,0 +1,62 @@
+<!-- SIDEBAR -->
+<div class="fixed top-0 left-0 h-full w-[250px] bg-black shadow-md pt-5 flex flex-col z-[1000] 
+transition-transform duration-300 sidebar" id="sidebar">
+
+    <!-- SIDEBAR HEADING  -->
+    <div class="flex items-center h-[80px] px-4">
+    <button onclick="closeSidebar()" class="bg-transparent border-none 
+    p-[10px_2px] m-0 cursor-pointer flex items-center">
+        <img src="/Assets/icons/menu-white.svg" class="w-[3vw] p-3 m-0 leading-none" />
+        <h1 class="font-dongle-bold text-[3vw] text-white leading-none 
+        p-0 ml-2 transition-colors duration-300 hover:text-[#14AE5C]">
+        Menu
+        </h1>
+    </button>
+    </div>
+
+    <!-- SIDEBAR LINKS -->
+    <hr class="border border-[#ccc] w-full my-4" />
+
+    <a href="/MyProfile" class="px-4 py-3 block no-underline font-dongle-light 
+    text-[2vw] text-white transition-colors duration-300 hover:text-[#14AE5C]">
+    View Profile
+    </a>
+    <a href="/searchusers" class="px-4 py-3 block no-underline font-dongle-light 
+    text-[2vw] text-white transition-colors duration-300 hover:text-[#14AE5C]">
+    Search Other Users
+    </a>
+
+    <hr class="border border-[#ccc] w-full my-4" />
+
+    {{#if user.isTech}}
+
+    <!-- Technician Create Reservation -->
+    <a href="/Tcreatereserve" class="px-4 py-3 block no-underline font-dongle-light 
+    text-[2vw] text-white transition-colors duration-300 hover:text-[#14AE5C]">
+    Create Reservation
+    </a>
+
+    <!-- Technician View Reservation -->
+    <a href="/tfilterreservs" class="px-4 py-3 block no-underline 
+    font-dongle-light text-[2vw] text-white transition-colors duration-300 hover:text-[#14AE5C]">
+    View Reservations
+    </a>
+
+    {{else}}    
+
+    <!-- Student Create Reservation -->
+    <a href="/createreserve/{{user.idNum}}" class="px-4 py-3 block no-underline font-dongle-light 
+    text-[2vw] text-white transition-colors duration-300 hover:text-[#14AE5C]">
+    Create Reservation
+    </a>
+
+    <!-- Student View Reservation -->
+    <a href="/viewreservs/{{user.idNum}}" class="px-4 py-3 block no-underline 
+    font-dongle-light text-[2vw] text-white transition-colors duration-300 hover:text-[#14AE5C]">
+    View Reservations
+    </a>
+
+    {{/if}}
+
+    <hr class="border border-[#ccc] w-full my-4" />
+</div>

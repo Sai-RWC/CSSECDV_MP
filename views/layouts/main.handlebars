@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{title}}</title>
+
+    <link rel="stylesheet" href="/CSS/fonts.css">
+
+    <script src="/JS/general.js"></script>
+    <script src="https://cdn.tailwindcss.com"></script>
+
+    <style>
+        .sidebar {
+        transform: translateX(-100%);
+        transition: transform 0.3s ease;
+        }
+
+        .sidebar.active {
+        transform: translateX(0);
+        }
+    </style>
+</head>
+<body class="bg-[#E0FFE5]">
+
+<div class="fixed top-0 left-0 w-full z-50 shadow-md">
+    {{> header}}
+    {{> sidebar}}
+</div>
+
+    </br>
+    </br>
+    </br>
+    </br>
+    {{{body}}}
+    
+</body>
+</html>

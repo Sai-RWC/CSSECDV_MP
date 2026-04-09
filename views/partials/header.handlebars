@@ -1,0 +1,29 @@
+<!-- HEADER -->
+<header class="bg-[#157346] p-3 flex justify-between items-center border shadow-md">
+    
+    <!-- SIDEBAR MENU -->
+    <button onclick="openSidebar()" class="bg-none border-none p-0 m-0 cursor-pointer">
+        <img src="/Assets/icons/menu-black.svg" class="w-[3vw] p-3">
+    </button>
+
+    <!-- LOGO -->
+    <div class="flex items-end">
+        <img src="/Assets/icons/logo.svg" class="w-[5vw] p-2">
+
+        <div class="ml-2">
+            <p class="Main font-bold text-[3vw] text-black leading-[0.3] m-0 p-0">
+                LABubuddy
+            </p>
+            <p class="RoleTitle text-white text-[2vw] leading-[1] m-0 p-0">
+                {{roleTitle}}
+            </p>
+        </div>
+    </div>
+
+    <!-- LOG OUT -->
+   <form action="/logout" method="get" class="font-light text-[1.8vw] text-black no-underline bg-[#34C578] 
+    rounded-full px-4 py-0.5 shadow-md transition-colors duration-300 
+    hover:bg-white hover:text-[#34C578] hover:shadow-md">
+    <button type="submit" class="bg-none border-none text-inherit font-inherit cursor-pointer">Log Out</button>
+    </form>
+</header>

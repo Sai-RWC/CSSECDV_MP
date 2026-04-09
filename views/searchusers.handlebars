@@ -1,0 +1,53 @@
+<link rel="stylesheet" href="/CSS/searchprofile.css" />
+
+<!-- MAIN CONTENT -->
+<main class="main-content">
+  <!-- USER SECTION -->
+  <div class="user-section">
+    {{#each users}}
+    <div class="user-card">
+      <div class="user-picture">
+        {{#if this.profPic}}
+          <img src="{{this.profPic}}" alt="{{this.fName}}" class="user-picture" />
+        {{else}}
+          <!-- Default image or initials -->
+          <img src="/Assets/images/default-avatar.png" alt="{{this.fName}}" class="user-picture" />
+        {{/if}}
+      </div>
+      <a href="/viewprofile/{{this.idNum}}" style="text-decoration: none; color: inherit;">
+        <p class="user-name">{{this.fName}} {{this.lName}}</p>
+      </a>
+    </div>
+    {{/each}}
+    
+    {{#unless users}}
+    <div class="no-users-message">
+      <p>No users found</p>
+    </div>
+    {{/unless}}
+  </div>
+
+  <!-- SEARCH SECTION -->
+  <div class="search-section">
+    <div class="search-logo">
+      <img src="/Assets/icons/logo.svg" alt="logo" class="search-logo" />
+    </div>
+    <h2 class="search-title">Search LABUDDIES</h2>
+
+    <form class="search-form" method="POST" action="/searchusers">
+      <input 
+        type="text" 
+        class="search-input" 
+        placeholder="Name" 
+        name="searchName"
+        value="{{searchName}}" 
+      />
+      <select class="search-input" name="roleFilter">
+        <option value="">Select Role</option>
+        <option value="student" {{#if (eq roleFilter 'student')}}selected{{/if}}>Student</option>
+        <option value="technician" {{#if (eq roleFilter 'technician')}}selected{{/if}}>Technician</option>
+      </select>
+      <button type="submit" class="search-btn">Search</button>
+    </form>
+  </div>
+</main>

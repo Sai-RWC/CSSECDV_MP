@@ -1,0 +1,82 @@
+[
+  {
+    "userID": null,
+    "userIdNum": 12304567,
+    "isAnon": false,
+    "slotName": "Lab 5, seat A2",
+    "lab": null,
+    "seat": null,
+    "startTime": "0",
+    "endTime": "10"
+  },
+  {
+    "userID": null,
+    "userIdNum": 12304567,
+    "isAnon": true,
+    "slotName": "Lab 2, seat D4",
+    "lab": null,
+    "seat": null,
+    "startTime": "10",
+    "endTime": "26"
+  },
+  {
+    "userID": null,
+    "userIdNum": 12406543,
+    "isAnon": false,
+    "slotName": "Lab 3, seat C1",
+    "lab": null,
+    "seat": null,
+    "startTime": "6",
+    "endTime": "26"
+  },
+  {
+    "userID": null,
+    "userIdNum": 12209753,
+    "isAnon": true,
+    "slotName": "Lab 1, seat B3",
+    "lab": null,
+    "seat": null,
+    "startTime": "16",
+    "endTime": "20"
+  },
+  {
+    "userID": null,
+    "userIdNum": 12209753,
+    "isAnon": false,
+    "slotName": "Lab 1, seat A4",
+    "lab": null,
+    "seat": null,
+    "startTime": "20",
+    "endTime": "26"
+  },
+  {
+    "userID": null,
+    "userIdNum": 12002486,
+    "isAnon": true,
+    "slotName": "Lab 3, seat B3",
+    "lab": null,
+    "seat": null,
+    "startTime": "25",
+    "endTime": "26"
+  },
+  {
+    "userID": null,
+    "userIdNum": 12103579,
+    "isAnon": false,
+    "slotName": "Lab 4, seat B5",
+    "lab": null,
+    "seat": null,
+    "startTime": "16",
+    "endTime": "24"
+  },
+  {
+    "userID": null,
+    "userIdNum": 12103579,
+    "isAnon": true,
+    "slotName": "Lab 2, seat E5",
+    "lab": null,
+    "seat": null,
+    "startTime": "24",
+    "endTime": "26"
+  }
+]

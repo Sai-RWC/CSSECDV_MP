@@ -1,0 +1,156 @@
+/* IMPORTING GENERAL STYLES */
+@import url("../CSS/fonts.css");
+
+
+/* MAIN AREA */
+.main-content {
+    display: grid;
+    grid-template-areas: 
+        "instruc instruc"
+        "slot-area timeslot-area" ;
+    grid-template-columns: 3fr 0.8fr;
+    grid-template-rows: 1fr 14fr;
+    gap: 20px;
+    padding: 2vw;
+}
+
+.instructions {
+    grid-area: instruc;
+
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+
+    font-family: Dongle-Reg;
+    font-size: 1.5vw;
+    line-height: 1;
+}
+
+.instructions h2 {
+    margin: 0;
+    padding: 0;
+}
+
+.instructions a {
+    text-decoration: none;
+    padding: 10px;
+
+    align-items: center;
+    justify-content: center;
+    color: black;
+    margin: 0;
+    padding: 0;
+}
+
+
+/* LAB/SEAT SLOT */
+.slot-area {
+    grid-area: slot-area;
+    background-color: white;
+    border-radius: 20px;
+    margin: 0;
+    padding: 0;
+
+    display: flex;
+    align-items: stretch;
+    justify-content: stretch;
+    overflow: hidden;
+}
+
+.slot-area-contents {
+    border: none;
+    width: 100%;
+    height: 100%;
+    overflow-x: hidden;
+}
+
+
+/* DATE/TIME SLOT */
+.timeslot-area {
+    grid-area: timeslot-area;
+
+    font-size: 5vw;
+    background-color: #D9F1DD;
+    border-radius: 20px;
+
+    margin: 0;
+    padding: 30px;
+}
+
+.chosen-slot-area, .timeslot-area, #res-date, .start-time, .end-time, .confirm-res {
+    font-family: Dongle-Reg;
+    font-size: 1.5vw;
+}
+
+#res-date, .start-time, .end-time, .confirm-res {
+    border: none;
+    border-radius: 10px;
+    padding: 8px;
+    cursor: pointer;
+}
+
+.chosen-slot-area {
+    display: flex;
+    flex-direction: row;
+    gap: 8px;
+}
+
+.chosen-slot-area p, .chosen-slot {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+
+    border-radius: 10px;
+    padding: 0;
+    margin: 0;
+    line-height: 1;
+}
+
+.chosen-slot {
+    color: black;
+    background-color: white;
+    padding: 10px 12px;
+}
+
+.timeslot-area {
+    line-height: 20px;
+}
+
+
+/* USER INFO */
+.email {
+    border: none;
+    background-color: white;
+    border-radius: 10px;
+    margin: 0;
+    padding: 10px;
+    font-size: 20px;
+}
+
+.anon {
+    padding: 10px 0px;
+}
+
+.anonRes:checked {
+    accent-color: #34C578;
+    border: none;
+}
+
+.confirm-res {
+    background-color: #999;
+    color: #ccc;
+    cursor: not-allowed;
+}
+
+.confirm-res.active {
+    background-color: black;
+    color: white;
+    cursor: pointer;
+    transition: background-color 0.4s ease, color 0.4s ease;
+}
+
+.confirm-res.active:hover {
+    background-color: #34C578;
+    color: black;
+}

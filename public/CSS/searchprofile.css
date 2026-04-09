@@ -1,0 +1,134 @@
+*  {
+    font-family: 'Dongle-Bold', sans-serif;
+    }
+        
+.main-content {
+    display: flex;
+    gap: 20px;
+    padding: 20px;
+    min-height: calc(100vh - 80px);
+    background: linear-gradient(135deg, #a8e6cf 0%, #dcedc1 100%);
+}
+
+.user-section {
+    flex: 0.2;
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.user-card {
+    background: rgba(255, 255, 255, 0.3);
+    border-radius: 20px;
+    padding: 20px;
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+    transition: transform 0.2s ease;
+}
+
+.user-card:hover {
+    transform: translateY(-2px);
+}
+
+.user-picture {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.5);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.user-name {
+    font-size: 28px;
+    font-family: 'Dongle-Bold', sans-serif;
+    color: #2c5f2d;
+    margin: 0;
+}
+
+.search-section {
+    margin-left: auto;
+    width: 300px;
+    background: rgba(255, 255, 255, 0.4);
+    border-radius: 25px;
+    padding: 30px;
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+        gap: 20px;
+}
+
+.search-logo {
+    width: 80px;
+    height: 80px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 10px;
+}
+
+.search-character img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain; /* Keeps logo proportions */
+}
+
+.search-title{
+    font-size: 32px;
+    font-family: 'Dongle-Bold', sans-serif;
+    color: #2c5f2d;
+    margin: 0 0 20px 0;
+    text-align: center;
+}
+
+.search-form{
+    width: 95%;
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.search-input {
+    width: 90%;
+    padding: 10px;
+    border: none;
+    border-radius: 15px;
+    background: rgba(255, 255, 255, 0.8);
+    font-size: 24px;
+    color: black;
+    box-shadow: inset 0 2px 5px rgba(0, 0, 0, 0.1);
+    transition: all 0.3s ease;
+}
+
+ .search-input::placeholder {
+    color: grey;
+}
+
+.search-btn {
+    background: #4a9b8e;
+    color: white;
+    border: none;
+    padding: 15px;
+    border-radius: 15px;
+    font-size: 28px;
+    font-family: 'Dongle-Bold', sans-serif;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 15px rgba(74, 155, 142, 0.3);
+}
+
+.search-btn:hover {
+    background: #3d8b7e;
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(74, 155, 142, 0.4);
+}
+
+.search-btn:active {
+    transform: translateY(0);
+}
+
+

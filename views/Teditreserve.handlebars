@@ -1,0 +1,105 @@
+<link rel="stylesheet" href="/CSS/createreserve.css">
+<script src="/JS/editreserve.js"></script>
+
+<div class="grid grid-cols-4 gap-5 p-6">
+
+  <!-- Header -->
+  <div class="col-span-4 flex justify-between font-[Dongle-Bold]">
+    <h2 class="text-3xl font-bold">
+      Editing Reservation for {{lab}}, Seat {{seat}} on {{reservDate}} - {{startTime}} TO {{endTime}}
+    </h2>
+  </div>
+
+  <!-- Slot / Seat Area -->
+  <div class="col-span-3 bg-white rounded-xl overflow-hidden shadow-inner">
+
+    <!-- Lab Selection -->
+    <div class="flex items-center justify-center gap-2 p-4 border shadow-md bg-[#92D3AD]">
+      <label for="labSelect" class="hidden">Choose Lab</label>
+      <select id="labSelect" name="labSelect" class="labSelect font-Dongle-Regular text-xl bg-white border rounded-xl px-4 py-1">
+        <option value="">--</option>
+        {{#each labs}}
+          <option value="{{this.value}}"
+            {{#ifEquals this.value ../labId}}selected{{/ifEquals}}>
+            {{this.name}}
+          </option>
+        {{/each}}
+      </select>
+    </div>
+
+    <!-- Seat Viewer -->
+    <iframe src="/reserveiframe?date={{reservDate}}&start={{startTime}}&end={{endTime}}&lab={{labNum}}" id="slotAreaContents" class="w-full h-full border"></iframe>
+
+  </div>
+
+  <!-- Reservation Form -->
+  <form method="POST" action="/Teditreserve/{{editId}}" class="col-span-1 bg-[#D9F1DD] rounded-xl p-6 text-lg space-y-4 shadow-inner">
+
+    <!-- Chosen Slot -->
+    <div class="flex items-center space-x-2">
+      <p class="text-2xl">Chosen slot:</p>
+      <input type="text" name="chosenSlot" id="chosenSlot"
+        class="chosenSlot bg-white px-4 py-2 border rounded text-xl text-black w-[10vw]"
+        value="{{chosenSlot}}"
+        readonly>
+    </div>
+
+    <!-- Date Input -->
+    <div>
+      <label for="resDate" class="text-2xl">Choose a Date</label>
+      <input type="date" id="resDate" name="resDate"
+        class="resDate w-full p-2 rounded text-xl border mt-1"
+        value="{{reservDate}}" required>
+    </div>
+
+    <!-- Start Time -->
+    <div>
+      <label for="startTime" class="text-2xl">Start of Reservation</label>
+      <select name="startTime" class="startTime w-full p-2 rounded border text-xl mt-1" required>
+        <option value="">-- None --</option>
+        {{#each timeLabels}}
+          <option value="{{@index}}"
+            {{#ifEquals @index ../startTimeIndex}}selected{{/ifEquals}}>
+            {{this}}
+          </option>
+        {{/each}}
+      </select>
+    </div>
+
+    <!-- End Time -->
+    <div>
+      <label for="endTime" class="text-2xl">End of Reservation</label>
+      <select name="endTime" class="endTime w-full p-2 rounded border text-xl mt-1" required>
+        <option value="">-- None --</option>
+        {{#each timeLabels}}
+          <option value="{{@index}}"
+            {{#ifEquals @index ../endTimeIndex}}selected{{/ifEquals}}>
+            {{this}}
+          </option>
+        {{/each}}
+      </select>
+    </div>
+
+
+    <!-- Success Message -->
+    {{#if success}}
+      <p id="reservSuccess" class="reservSuccess !text-red-500 text-xl mt-4 font-light">
+        Reservation successful!
+      </p>
+    {{/if}}
+
+    <!-- Anonymous Checkbox -->
+    <div class="flex items-center space-x-2 mt-6">
+      <input type="checkbox" name="anonymous" class="anonymous accent-green-500"
+        {{#if reservation.isAnon}}checked{{/if}}>
+      <label for="anonymous" class="text-2xl">Reserve Anonymously?</label>
+    </div>
+
+    <!-- Submit Button -->
+    <button type="submit" name="confirmRes"
+      class="confirmRes w-full py-2 rounded text-2xl shadow-md text-white" disabled>
+      Update Reservation
+    </button>
+  </form>
+
+</div>

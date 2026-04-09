@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en" class="h-full">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>LABubuddies - Login</title>
+  <link href="../CSS/login-style.css" rel="stylesheet">
+  <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="flex items-center justify-center h-full relative overflow-hidden">
+  <!-- Background Circle -->
+  <div class="absolute w-[1000px] h-[1000px] rounded-full bg-green-200/50"></div>
+
+  <!-- Login Form -->
+  <form id="loginForm" action="/login" method="POST" class="flex flex-col items-center space-y-4 z-10">
+    <img src="../Assets/icons/logo.svg" alt="LABubuddy Logo" class="w-48 h-auto" />
+    <h1 class="logo-title text-white text-4xl">L A B u b u d d y</h1>
+
+    <input type="email" name="email" placeholder="Email" class="w-64 px-4 py-2 rounded-full outline-none shadow-md" required />
+    <input type="password" name="password" placeholder="Password" class="w-64 px-4 py-2 rounded-full outline-none shadow-md" required />
+
+    <label class="text-white text-sm flex items-center space-x-2">
+      <input type="checkbox" name="rememberMe" id="rememberMe" class="rememberMe form-checkbox" />
+      <span>Remember me for 3 weeks</span>
+    </label>
+
+    <p class="text-white text-sm">
+      No account yet? <a href="/register" class="underline">Create Account</a>
+    </p>
+
+    <button type="submit"
+      class="w-64 px-4 py-2 rounded-full bg-emerald-700 text-white font-bold outline-none shadow-md flex items-center justify-center transition-transform duration-200 hover:scale-105 hover:shadow-lg">
+      Log in
+    </button>
+  </form>
+
+  <script src="/JS/login.js"></script>
+</body>
+</html>

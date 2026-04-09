@@ -1,0 +1,54 @@
+<script src="https://cdn.tailwindcss.com"></script>
+<script src="/JS/viewprofile.js"></script>
+<body class="bg-gradient-to-br from-green-400 to-green-600 min-h-screen">
+    <main class="p-4 md:p-6 max-w-4xl mx-auto">
+        <div class="rounded-3xl shadow-lg p-8 mx-4" style=" background: linear-gradient(135deg, #a8e6cf 0%, #dcedc1 100%);">
+            {{#if user}}
+            <div class="mb-8">
+                <button class="mb-6 flex items-center gap-2 text-gray-700 hover:text-gray-900 transition-colors" onclick="window.location.href='/createreserve/{{user.idNum}}'">
+                    <img src="../Assets/icons/back.svg" alt="Back" class="w-5 h-5">
+                </button>
+                
+                <div class="flex justify-center mb-6">
+                    <div class="w-32 h-32 rounded-full overflow-hidden border-4 border-white shadow-lg">
+                        <img id="profile-image" src="{{#if user.profPic}}{{user.profPic}}{{else}}/Assets/images/default-avatar.png{{/if}}" alt="Profile Picture" class="w-full h-full object-cover">
+                    </div>
+                </div>
+                
+                <h1 class="text-3xl font-bold text-gray-800 text-center mb-8">{{user.fName}} {{user.lName}}</h1>
+                
+                <div class="mb-8">
+                    <p class="text-lg font-semibold text-gray-700 mb-3">Description</p>
+                    <div class="rounded-2xl p-4 border border-white/30" style="background: rgba(255, 255, 255, 0.4);">
+                        <p class="text-gray-700">{{user.profDesc}}</p>
+                    </div>
+                    
+                    {{#if isOwnProfile}}
+                    <div class="flex flex-col items-center gap-3 mt-4">
+                        <button onclick="window.location.href='/editprofile'" class="px-6 py-2 bg-green-600 text-white rounded-lg hover:bg-green-700 transition-colors font-semibold">Edit Profile</button>
+                        <button onclick="confirmDeleteAccount()" data-user-id="{{user.idNum}}" class="px-6 py-2 bg-red-600 text-white rounded-lg hover:bg-red-700 transition-colors font-semibold">Delete Account</button>
+                    </div>
+                    {{/if}}
+                </div>
+            </div>
+            {{/if}}
+            
+            {{#unless user.isTech}}
+            <div class="pt-8">
+                <h2 class="text-2xl font-bold text-gray-800 mb-6">Current Reservations</h2>
+                <div class="space-y-4">
+                    {{#each reservations}}
+                    <div class="rounded-2xl p-4 border border-white/30" style="background: rgba(255, 255, 255, 0.4);">
+                        <p class="text-lg font-semibold text-gray-800 mb-1">{{this.slotName}} • {{formatDate this.reqMade}}</p>
+                        <p class="text-gray-600">{{this.startTimeLabel}} - {{this.endTimeLabel}}</p>
+                    </div>
+                    {{/each}}
+                    {{#unless reservations.length}}
+                    <p class="text-center text-gray-600">No reservations found.</p>
+                    {{/unless}}
+                </div>
+            </div>
+            {{/unless}}
+        </div>
+    </main>
+</body>

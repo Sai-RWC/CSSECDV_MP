@@ -1,0 +1,62 @@
+[
+  { 
+    "fName": "Timothy", 
+    "lName": "Ortiz", 
+    "idNum": 12304567,
+    "email": "timothy_ortiz@dlsu.edu.ph",
+    "password": "iLoveChikkieNuggies123", 
+    "isTech": false, 
+    "profPic": "", 
+    "profDesc": "DLSU ID 123 BS-IT" 
+  },
+  { 
+    "fName": "Maricarmen", 
+    "lName": "Antonio", 
+    "idNum": 12406543,
+    "email": "maricarmen_antonio@dlsu.edu.ph",
+    "password": "L0K1MYL0VE<33", 
+    "isTech": false, 
+    "profPic": "", 
+    "profDesc": "DLSU ID 121 BSCS-ST" 
+  },
+  { 
+    "fName": "Amadeo", 
+    "lName": "Espinosa", 
+    "idNum": 12209753,
+    "email": "amadeo_espinoza@dlsu.edu.ph",
+    "password": "M4R1CARM3N_4_L1F3!", 
+    "isTech": false, 
+    "profPic": "", 
+    "profDesc": "DLSU ID 122 BSCS-ST" 
+  },
+  { 
+    "fName": "Daisy", 
+    "lName": "Reyes", 
+    "idNum": 12002486,
+    "email": "daisy_reyes@dlsu.edu.ph",
+    "password": "P4SSW0RD123456!", 
+    "isTech": false, 
+    "profPic": "", 
+    "profDesc": "DLSU ID 124 BSCS-NIS" 
+  },
+  { 
+    "fName": "Laurissa", 
+    "lName": "Wayne", 
+    "idNum": 12103579,
+    "email": "laurissa_wayne@dlsu.edu.ph",
+    "password": "insertPasswordH3R3", 
+    "isTech": false, 
+    "profPic": "", 
+    "profDesc": "DLSU ID 121 BS-IT" 
+  },
+  { 
+    "fName": "Loki", 
+    "lName": "Lopez", 
+    "idNum": 11907476,
+    "email": "loki_lopez@dlsu.edu.ph",
+    "password": "THORisF4T!!!", 
+    "isTech": true, 
+    "profPic": "/Assets/images/technician.png", 
+    "profDesc": "Reservation Technician" 
+  }
+]

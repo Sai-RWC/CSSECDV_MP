@@ -1,0 +1,47 @@
+
+  <title>LABubuddies - Sign Up</title>
+  <link href="../CSS/login-style.css" rel="stylesheet">
+  <link href="../CSS/signup.css" rel="stylesheet">
+  <script src="https://cdn.tailwindcss.com"></script>
+
+<body class="flex items-center justify-center h-full relative overflow-hidden">
+  <!-- Background Circle -->
+  <div class="absolute w-[1000px] h-[1000px] rounded-full bg-[#D9F1DD] opacity-20"></div>
+
+
+  {{#if errors}}
+<div id="error-popup" class="fixed top-10 left-1/2 transform -translate-x-1/2 bg-red-100 text-red-800 border border-red-400 px-6 py-4 rounded shadow-lg z-50 max-w-md w-full text-center">
+  <ul class="space-y-1">
+    {{#each errors}}
+      <li>⚠️ {{this}}</li>
+    {{/each}}
+  </ul>
+  <button onclick="document.getElementById('error-popup').remove()" class="mt-2 text-sm underline text-red-600 hover:text-red-800">Close</button>
+</div>
+{{/if}}
+
+  <!-- Sign Up Form -->
+  <form action="/register" method="POST" class="flex flex-col items-center space-y-4 z-10 w-full max-w-md">
+    <img src="../Assets/icons/logo.svg" alt="LABubuddy Logo" class="w-48 h-auto" />
+    <h1 class="logo-title text-white text-4xl">L A B u b u d d y</h1>
+
+    <input type="text" name="fname" placeholder="First Name" class="w-64 px-4 py-2 rounded-full outline-none shadow-lg" required />
+    <input type="text" name="lname" placeholder="Last Name" class="w-64 px-4 py-2 rounded-full outline-none shadow-lg" required />
+    <input type="email" name="email" placeholder="Email" class="w-64 px-4 py-2 rounded-full outline-none shadow-lg" required />
+
+    <!-- Student ID input -->
+    <input type="text" name="idNum" placeholder="Student ID Number" class="w-64 px-4 py-2 rounded-full outline-none shadow-lg" required />
+
+    <input type="password" name="password" placeholder="Password" class="w-64 px-4 py-2 rounded-full outline-none shadow-lg" required />
+    <input type="password" name="confirmPassword" placeholder="Confirm Password" class="w-64 px-4 py-2 rounded-full outline-none shadow-lg" required />
+
+    <p class="text-white text-sm">Already have an account? <a href="/login" class="underline">Log in</a></p>
+
+    <button type="submit"
+      class="w-64 px-4 py-2 rounded-full bg-emerald-700 text-white font-bold shadow-lg flex items-center justify-center transition-all hover:scale-105 hover:shadow-lg">
+      Create Account
+    </button>
+  </form>
+
+</body>
+

@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Labubuddies</title>
+
+  <link rel="stylesheet" href="../../CSS/fonts.css">
+  
+  <script src="/JS/iframeRes.js"></script>
+  <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="m-0 p-0 bg-white">
+
+  <!-- Pop-up Message -->
+  <div id="popReserved" class="fixed hidden w-full flex items-center bg-gray-100 text-2xl text-red-500 p-4 font-sans">
+    <p>This seat has been reserved. Please choose another.</p>
+  </div>
+
+  <!-- Main Slot Area -->
+  <div class="grid grid-cols-[200px_repeat(3,1fr)] grid-rows-[auto_auto_auto] gap-4 p-4">
+    <!-- Door -->
+    <div class="w-[200px] col-start-1 row-start-1">
+      <img src="/Assets/icons/labdoor.svg" class="w-full" alt="Door" />
+    </div>
+
+    <!-- Board 1 -->
+    <div class="col-start-1 row-start-2">
+      <img src="/Assets/icons/board.svg" class="w-[50px]" alt="Board" />
+    </div>
+
+    <!-- Board 2 -->
+    <div class="col-start-1 row-start-3">
+      <img src="/Assets/icons/board.svg" class="w-[50px]" alt="Board" />
+    </div>
+
+    <!-- Lab Areas -->
+    {{#each areas}}
+      <div class="flex flex-row gap-1 p-1">
+        <div class="flex flex-col gap-8 p-7">
+
+          <!-- Upper Row -->
+          <div class="flex space-x-2">
+            {{#each this.upper}}
+              <button id="{{id}}" class="chairs bg-transparent border-none w-20 flex justify-center cursor-pointer">
+                <img src="{{img}}" class="w-full p-4" alt="{{id}}" />
+              </button>
+            {{/each}}
+          </div>
+
+          <!-- Middle Row (Table) -->
+          <div class="flex items-center justify-start -mt-10 -mb-10 -ml-8">
+            <div class="flex items-center justify-start w-full h-[5%]">
+              <pre>             </pre>
+              <img src="{{this.table}}" class="w-[150px]" alt="Table {{@key}}" />
+            </div>
+          </div>
+
+          <!-- Lower Row -->
+          <div class="flex space-x-2">
+            {{#each this.lower}}
+              <button id="{{id}}" class="chairs bg-transparent border-none w-20 flex 
+              justify-center cursor-pointer" {{#if onclick}}onclick="{{onclick}}"{{/if}}>
+                <img src="{{img}}" class="w-full p-4" alt="{{id}}" />
+              </button>
+            {{/each}}
+          </div>
+        </div>
+
+        <!-- Middle Chair -->
+        <div class="flex items-center justify-center -mt-10 -mb-10 -ml-8 w-20">
+          {{#if this.mid}}
+            <button id="{{this.mid.id}}" class="chairs bg-transparent border-none w-21 flex 
+            justify-center cursor-pointer" {{#if this.mid.onclick}}onclick="{{this.mid.onclick}}"{{/if}}>
+              <img src="{{this.mid.img}}" class="w-full p-4" alt="{{this.mid.id}}" />
+            </button>
+          {{/if}}
+        </div>
+
+      </div>
+    {{/each}}
+
+  </div>
+
+</body>
+
+<script>
+  const reserved = {{{json reservedSeats}}};
+
+  window.addEventListener('DOMContentLoaded', () => {
+    updateSeats(reserved);
+  });
+</script>
+
+
+</html>

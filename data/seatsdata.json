@@ -1,0 +1,55 @@
+[
+  { "seatCode": "A1"},
+  { "seatCode": "A2"},
+  { "seatCode": "A3"},
+  { "seatCode": "A4"},
+  { "seatCode": "A5"},
+
+  { "seatCode": "B1"},
+  { "seatCode": "B2"},
+  { "seatCode": "B3"},
+  { "seatCode": "B4"},
+  { "seatCode": "B5"},
+
+  { "seatCode": "C1"},
+  { "seatCode": "C2"},
+  { "seatCode": "C3"},
+  { "seatCode": "C4"},
+  { "seatCode": "C5"},
+
+  { "seatCode": "D1"},
+  { "seatCode": "D2"},
+  { "seatCode": "D3"},
+  { "seatCode": "D4"},
+  { "seatCode": "D5"},
+
+  { "seatCode": "E1"},
+  { "seatCode": "E2"},
+  { "seatCode": "E3"},
+  { "seatCode": "E4"},
+  { "seatCode": "E5"},
+
+  { "seatCode": "F1"},
+  { "seatCode": "F2"},
+  { "seatCode": "F3"},
+  { "seatCode": "F4"},
+  { "seatCode": "F5"},
+
+  { "seatCode": "G1"},
+  { "seatCode": "G2"},
+  { "seatCode": "G3"},
+  { "seatCode": "G4"},
+  { "seatCode": "G5"},
+
+  { "seatCode": "H1"},
+  { "seatCode": "H2"},
+  { "seatCode": "H3"},
+  { "seatCode": "H4"},
+  { "seatCode": "H5"},
+  
+  { "seatCode": "I1"},
+  { "seatCode": "I2"},
+  { "seatCode": "I3"},
+  { "seatCode": "I4"},
+  { "seatCode": "I5"}
+]

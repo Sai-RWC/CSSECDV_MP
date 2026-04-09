@@ -1,0 +1,43 @@
+<link rel="stylesheet" href="/CSS/tfilter.css">
+<script src="/JS/TFilterReservation.js"></script>
+
+<div id="content-area" class="flex items-center justify-center">
+  <div class="bg-[#1C9259] bg-opacity-40 mt-16 rounded-lg w-[700px] h-auto text-[#2C2C2C] p-8">
+
+    <p class="flex justify-center text-[30px] text-3xl font-bold mb-6">Filter Reservations</p>
+
+    <form method="GET" action="/tviewreservs" class="flex flex-col items-center space-y-4">
+
+      <!-- LAB dropdown -->
+      <label for="lab" class="text-2xl">Choose Laboratory:</label>
+      <select name="lab" id="lab" class="w-80 text-xl rounded-full border shadow-sm p-2">
+        <option value="">All Labs</option>
+        {{#each labs}}
+          <option value="{{this._id}}">{{this.labName}}</option>
+        {{/each}}
+      </select>
+
+      <!-- DATE picker -->
+      <label for="date" class="text-2xl">Choose a Date:</label>
+      <input type="date" name="date" id="date" class="w-80 text-xl rounded-full border shadow-sm p-2" />
+
+      <!-- start time dropdown -->
+      <label for="startTime" class="text-2xl">Choose Start Time:</label>
+      <select name="startTime" id="startTime" class="w-80 text-xl rounded-full border shadow-sm p-2">
+        <option value="">-- Select --</option>
+      </select>
+
+      <!-- end time dropdown -->
+      <label for="endTime" class="text-2xl">Choose End Time:</label>
+      <select name="endTime" id="endTime" class="w-80 text-xl rounded-full border shadow-sm p-2">
+        <option value="">-- Select --</option>
+      </select>
+
+      <button type="submit" name="submitSearch" id="submitSearch" class="bg-[#14AE5C] px-6 py-3 rounded-full text-white text-xl" disabled>
+        Search
+      </button>
+
+      <a href="/tviewreservs" class="mt-2 text-xl underline hover:text-green-700">View All Instead</a>
+    </form>
+  </div>
+</div>

@@ -1,0 +1,93 @@
+<link rel="stylesheet" href="/CSS/createreserve.css">
+<script src="/JS/Tcreatereserve.js"></script>
+
+<div class="grid grid-cols-4 gap-5 p-6">
+
+  <!-- Instructions -->
+  <div class="col-span-4 flex justify-between font-[Dongle-Bold]">
+    <h2 class="text-3xl font-bold">Choose a laboratory.</h2>
+  </div>
+
+  <!-- Slot / Seat Area -->
+  <div class="col-span-3 bg-white rounded-xl overflow-hidden shadow-inner">
+    
+    <!-- Lab Selection -->
+    <div class="flex items-center justify-center gap-2 p-4 border shadow-md bg-[#92D3AD]">
+      <label for="labSelect" class="hidden">Choose Lab</label>
+      <select id="labSelect" name="labSelect" class="labSelect font-Dongle-Regular text-xl bg-white border rounded-xl px-4 py-1" disabled>
+          <option value="">--</option>
+        {{#each labs}}
+          <option value="{{this.value}}">{{this.name}}</option>
+        {{/each}}
+      </select>
+    </div>
+
+    <!-- Seat Area -->
+    <iframe src="/unavailiframe" id="slotAreaContents" class="w-full h-full border"></iframe>
+  </div>
+
+  <!-- Reservation Form -->
+  <form method="POST" action="/Tsubmit-reservation" class="col-span-1 bg-[#D9F1DD] rounded-xl p-6 text-lg space-y-4 shadow-inner">
+  
+    
+    <!-- Chosen Slot -->
+    <div class="flex items-center space-x-2">
+      <p class="text-2xl">Chosen slot:</p>
+      <input type="text" name="chosenSlot" id="chosenSlot" class="chosenSlot bg-white px-4 py-2 border rounded text-xl text-black w-[10vw]" value="-- None --" readonly>
+    </div>
+
+    <!-- Student ID Number -->
+    <div>
+        <p class="text-2xl">Student's ID Number:</p>
+      <input type="text" name="studentID" id="studentID" class="studentID bg-white px-4 py-2 border rounded text-xl text-black w-[10vw]">
+    </div>
+
+    <!-- Date Input -->
+    <div>
+      <label for="resDate" class="text-2xl">Choose a Date</label>
+      <input type="date" id="resDate" name="resDate" class="resDate w-full p-2 rounded text-xl border mt-1" required disabled>
+    </div>
+
+    <!-- Start Time -->
+    <div>
+      <label for="startTime" class="text-2xl">Start of Reservation</label>
+      <select name="startTime" class="startTime w-full p-2 rounded border text-xl mt-1" required disabled>
+        <option value="">-- None --</option>
+      </select>
+    </div>
+
+    <!-- End Time -->
+    <div>
+      <label for="endTime" class="text-2xl">End of Reservation</label>
+      <select name="endTime" class="endTime w-full p-2 rounded border text-xl mt-1" required disabled>
+        <option value="">-- None --</option>
+      </select>
+    </div>
+
+    <div id="popInvalid" class="hidden text-2xl text-red-500 p-1 font-sans">
+      <p>Invalid ID number.</p>
+    </div>
+
+    {{#if success}}
+      <p id="reservSuccess" class="reservSuccess !text-red-500 text-2xl mt-4 font-light">Reservation successful!</p>
+    {{/if}}
+
+    <br/>
+    <br/>
+    <br/>
+    <br/>
+    <br/>
+
+    <!-- Anonymous Checkbox -->
+    <div class="flex items-center space-x-2">
+      <input type="checkbox" name="anonymous" class="anonymous accent-green-500">
+      <label for="anonymous" class="text-2xl">Reserve Anonymously?</label>
+    </div>
+
+    <!-- Submit Button -->
+    <button type="submit" name="confirmRes" class="confirmRes w-full py-2 rounded text-2xl shadow-md text-white" disabled>
+      Confirm
+    </button>
+  </form>
+
+</div>
