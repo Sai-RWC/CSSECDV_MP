@@ -43,11 +43,20 @@ exports.postLogin = async (req, res) => {
         //console.log('Password match:', isMatch);
 
         if (!isMatch) {
+            errMsg = "Incorrect username or password"
+            if (user.numAttempts > 8 && !user.isLocked) {
+                user.isLocked = true;
+                user.numAttempts = 0;
+            } else {
+                user.numAttempts = user.numAttempts + 1;
+                user.lastLogin = new Date();
+                await user.save()
+            }
             return res.status(401).render('login', {
                 title: 'Labubuddy | Login',
                 layout: false,
-                error: true
-                // errorMessage: 'Incorrect password'
+                error: true,
+                errorMessage: errMsg
             });
         }
 
@@ -90,6 +99,7 @@ exports.getRegister = (req, res) => {
 };
 
 exports.postRegister = async (req, res) => {
+    // https://www.geeksforgeeks.org/javascript/javascript-program-to-validate-password-using-regular-expressions/
     const { fname, lname, email, password, confirmPassword, idNum } = req.body;
 
     if (password !== confirmPassword) {
@@ -97,7 +107,7 @@ exports.postRegister = async (req, res) => {
     }
 
     // Validate idNum format
-    const idNumPattern = /^1(0[1-9]|1[0-9]|2[0-5])0\d{4}$/; // DLSU id number format
+    const idNumPattern = /^1\d{7}/;
 
     if (!idNumPattern.test(idNum)) {
         return res.send('Invalid ID Number format. Must be 8 digits, start with 1, and include valid entry year (e.g., 12345678)');

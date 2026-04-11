@@ -23,9 +23,28 @@ const userSchema = new mongoose.Schema({
         type: String,
         required: true
     },
+    // might update this into role 
     isTech: {
         type: Boolean,
         required: true
+    },
+    numAttempts: {
+        type: Number,
+        default: 0
+    },
+    lastLogin: {
+        type: Date
+    },
+    isLocked: {
+        type: Boolean,
+        default: false
+    },
+    prevPass: {
+        type: [String],
+        maxlength: 3
+    },
+    pwDate: {
+        type: Date,
     },
     profPic: String,
     profDesc: String
