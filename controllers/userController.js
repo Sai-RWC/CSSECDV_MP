@@ -228,8 +228,9 @@ exports.postEditProfile = async (req, res) => {
         res.redirect(`/MyProfile`);
 
     } catch (error) {
-        await logError(error, 'userController.postEditProfile');
-        console.error(error);
+        logger.error(error.message);
+        // await logError(error, 'userController.postEditProfile');
+        // console.error(error);
 
         if (req.file) {
             fs.unlinkSync(req.file.path);
@@ -261,8 +262,9 @@ exports.getSearchUsers = async (req, res) => {
             currentUser: req.session.user
         });
     } catch (error) {
-        await logError(error, 'userController.getSearchUsers');
-        console.error('Search Users Error:', error);
+        // await logError(error, 'userController.getSearchUsers');
+        // console.error('Search Users Error:', error);
+        logger.error(error.message);
         res.status(500).render('error', { 
             title: 'Server Error',
             currentUser: req.session.user 
@@ -344,8 +346,9 @@ exports.postSearchUsers = async (req, res) => {
             currentUser: req.session.user
         });
     } catch (error) {
-        await logError(error, 'userController.postSearchUsers');
-        console.error('Search Error:', error);
+        // await logError(error, 'userController.postSearchUsers');
+        // console.error('Search Error:', error);
+        logger.error(error.message);
         res.status(500).render('error', { 
             title: 'Server Error',
             currentUser: req.session.user 
@@ -383,8 +386,9 @@ exports.deleteAccount = async (req, res) => {
             reservationsDeleted: deletedReservations.deletedCount 
         });
     } catch (error) {
-        await logError(error, 'userController.deleteAccount');
-        console.error('Delete Account Error:', error);
+        // await logError(error, 'userController.deleteAccount');
+        // console.error('Delete Account Error:', error);
+        logger.error(error.message);
         res.status(500).json({ error: 'Server error', details: error.message });
     }
 };

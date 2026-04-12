@@ -1,6 +1,5 @@
 const UserSchema = require('../models/Users');
 const bcrypt = require('bcrypt');
-const logError = require('../middleware/logError');
 const logger = require('../utils/logger');
 
 exports.getIndex = (req, res) => {

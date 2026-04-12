@@ -6,13 +6,13 @@ const { isAuthenticated, isStudent, isAdmin, isAdminMod } = require('../middlewa
 router.get('/createreserve/:idNum', isAuthenticated, isStudent, reservationController.getCreateResStudent);
 router.post('/submit-reservation', isAuthenticated, isStudent, reservationController.postResStudent);
 
-router.get('/Tcreatereserve', isAuthenticated, isAdmin, reservationController.getCreateResTech);
-router.post('/Tsubmit-reservation', isAuthenticated, isAdmin, reservationController.postResTech);
+router.get('/Tcreatereserve', isAuthenticated, isAdminMod, reservationController.getCreateResTech);
+router.post('/Tsubmit-reservation', isAuthenticated, isAdminMod, reservationController.postResTech);
 
 router.get('/viewreservs/:idNum', isAuthenticated, isStudent, reservationController.getViewResStudent);
 
-router.get('/tviewreservs', isAuthenticated, isAdmin, reservationController.getViewResTech);
-router.get('/tfilterreservs', isAuthenticated, isAdmin, reservationController.getFilterResTech);
+router.get('/tviewreservs', isAuthenticated, isAdminMod, reservationController.getViewResTech);
+router.get('/tfilterreservs', isAuthenticated, isAdminMod, reservationController.getFilterResTech);
 
 router.get('/editreserve/:id', isAuthenticated, reservationController.getEditRes);
 router.post('/editreserve/:id', isAuthenticated, reservationController.postEditRes);
