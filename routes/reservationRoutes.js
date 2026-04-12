@@ -1,18 +1,18 @@
 const express = require('express');
 const router = express.Router();
 const reservationController = require('../controllers/reservationController');
-const { isAuthenticated, isStudent, isTechnician } = require('../middleware/auth');
+const { isAuthenticated, isStudent, isAdmin, isAdminMod } = require('../middleware/auth');
 
 router.get('/createreserve/:idNum', isAuthenticated, isStudent, reservationController.getCreateResStudent);
 router.post('/submit-reservation', isAuthenticated, isStudent, reservationController.postResStudent);
 
-router.get('/Tcreatereserve', isAuthenticated, isTechnician, reservationController.getCreateResTech);
-router.post('/Tsubmit-reservation', isAuthenticated, isTechnician, reservationController.postResTech);
+router.get('/Tcreatereserve', isAuthenticated, isAdmin, reservationController.getCreateResTech);
+router.post('/Tsubmit-reservation', isAuthenticated, isAdmin, reservationController.postResTech);
 
 router.get('/viewreservs/:idNum', isAuthenticated, isStudent, reservationController.getViewResStudent);
 
-router.get('/tviewreservs', isAuthenticated, isTechnician, reservationController.getViewResTech);
-router.get('/tfilterreservs', isAuthenticated, isTechnician, reservationController.getFilterResTech);
+router.get('/tviewreservs', isAuthenticated, isAdmin, reservationController.getViewResTech);
+router.get('/tfilterreservs', isAuthenticated, isAdmin, reservationController.getFilterResTech);
 
 router.get('/editreserve/:id', isAuthenticated, reservationController.getEditRes);
 router.post('/editreserve/:id', isAuthenticated, reservationController.postEditRes);

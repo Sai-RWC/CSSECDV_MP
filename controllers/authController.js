@@ -1,6 +1,7 @@
 const UserSchema = require('../models/Users');
 const bcrypt = require('bcrypt');
 const logError = require('../middleware/logError');
+const logger = require('../utils/logger');
 
 exports.getIndex = (req, res) => {
     req.session.destroy();
@@ -15,8 +16,8 @@ exports.getLogout = (req, res) => {
 exports.getLogin = (req, res) => {
     res.render('login', {
         title: 'Labubuddy | Login',
+        error: null,
         layout: false,
-        error: false
     });
 };
 
@@ -31,7 +32,6 @@ exports.postLogin = async (req, res) => {
             return res.status(401).render('login', {
                 title: 'Labubuddy | Login',
                 layout: false,
-                error: true
                 // errorMessage: 'User not found'
             });
         }
@@ -42,21 +42,42 @@ exports.postLogin = async (req, res) => {
         const isMatch = await bcrypt.compare(password, user.password);
         //console.log('Password match:', isMatch);
 
-        if (!isMatch) {
-            errMsg = "Incorrect username or password"
-            if (user.numAttempts > 8 && !user.isLocked) {
-                user.isLocked = true;
-                user.numAttempts = 0;
+
+        if (user.isLocked) {
+            const diffMs = new Date() - user.lastLogin;
+            const diffMinutes = diffMs / 60000;
+            const minsWait = 1;
+            console.log(`diffMinutes: ${diffMinutes}`);
+            if (diffMinutes < minsWait){
+                logger.warn('Account is locked', {id: user._id, attempts: user.numAttempts})
+                return res.status(401).render('login', {
+                    title: 'Labubuddy | Login',
+                    layout: false,
+                    error: `Account is locked try again in ${minsWait - Math.floor(diffMinutes)} minutes`,
+                });
             } else {
-                user.numAttempts = user.numAttempts + 1;
-                user.lastLogin = new Date();
-                await user.save()
+                logger.warn('Account is unlocked', {id: user._id});
+                user.isLocked = false;
+                if (isMatch) {
+                    user.numAttempts = 0;
+                }
+                await user.save();
             }
+        }
+
+        if (!isMatch) {
+            logger.warn('Login attempt', {id: user._id, ip: req.ip})
+            user.numAttempts = user.numAttempts + 1;
+            user.lastLogin = new Date();
+            if (user.numAttempts > 5) { // bring this back to 5 after everythings done
+                logger.warn('Account is locked', {id: user._id})
+                user.isLocked = true;
+            }
+            await user.save()
             return res.status(401).render('login', {
                 title: 'Labubuddy | Login',
                 layout: false,
-                error: true,
-                errorMessage: errMsg
+                error: "Invalid email or password",
             });
         }
 
@@ -67,9 +88,10 @@ exports.postLogin = async (req, res) => {
             lName: user.lName,
             idNum: user.idNum,
             email: user.email,
-            isTech: user.isTech,
+            role: user.role,
             profPic: user.profPic,
-            profDesc: user.profDesc
+            profDesc: user.profDesc,
+            isAdmin: user.role === 'admin'
         };
 
         // Session management for "Remember Me"
@@ -79,14 +101,16 @@ exports.postLogin = async (req, res) => {
             req.session.cookie.expires = false;
         }
 
-        if(user.isTech) {
+        if(user.role === 'admin' || user.role === 'moderator') {
+            console.log("redirecting");
             return res.redirect('/Tcreatereserve');
         } else {
             return res.redirect(`/createreserve/${user.idNum}`);
         }
     } catch (err) {
-        await logError(err, 'authController.postLogin');
-        console.error(err);
+        // await logError(err, 'authController.postLogin');
+        // console.error(err);
+        logger.error(err.message);
         res.status(500).send('Login failed');
     }
 };
@@ -128,7 +152,6 @@ exports.postRegister = async (req, res) => {
             email,
             password: hashedPassword,
             idNum,
-            isTech: false, // Default to student
             profPic: '',
             profDesc: ''
         });

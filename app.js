@@ -3,12 +3,15 @@ const exphbs = require('express-handlebars');
 const session = require('express-session');
 const mongoose = require('mongoose');
 const path = require('path');
+const morgan = require('morgan');
 
 const authRoutes = require('./routes/authRoutes');
 const userRoutes = require('./routes/userRoutes');
 const reservationRoutes = require('./routes/reservationRoutes');
 const iframeRoutes = require('./routes/iframeRoutes');
 const pageRoutes = require('./routes/pageRoutes');
+const adminRoutes = require('./routes/adminRoutes');
+const logger = require('./utils/logger');
 
 const app = express();
 const port = 3000;
@@ -37,6 +40,7 @@ app.use('/', authRoutes);
 app.use('/', userRoutes);
 app.use('/', reservationRoutes);
 app.use('/', iframeRoutes);
+app.use('/', adminRoutes);
 
 
 // MongoDB connection
@@ -75,6 +79,11 @@ app.engine('handlebars', hbs.engine);
 app.set('view engine', 'handlebars');
 app.use(express.static(path.join(__dirname, 'public')));
 
+// logger
+const stream = { write: (msg) => logger.http(msg.trim()) };
+app.use(morgan('combined', { stream }));
+
+logger.info('Server started');
 
 // Prevent browser caching
 app.use((req, res, next) => {

@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en" class="h-full">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+        <title>LABubuddies - Logs</title>
+        <link href="../CSS/login-style.css" rel="stylesheet">
+        <script src="https://cdn.tailwindcss.com"></script>
+        <link rel="stylesheet" href="../CSS/logs.css" />
+    </head>
+    <body>
+        <div class="page-header">
+            <div class="page-title">
+                <svg fill="none" viewBox="0 0 24 24" stroke="#059669" stroke-width="2">
+                    <path stroke-linecap="round" stroke-linejoin="round"
+                          d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586
+                             a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19
+                             a2 2 0 01-2 2z"/>
+                </svg>
+                Server Logs
+            </div>
+            <a href="/dashboard" class="back-link">← Back to dashboard</a>
+        </div>
+
+        <!-- Metric Cards -->
+        <div class="metrics">
+            <div class="metric-card">
+                <div class="metric-label">Total entries</div>
+                <div class="metric-value total">{{stats.total}}</div>
+            </div>
+            <div class="metric-card">
+                <div class="metric-label">Info</div>
+                <div class="metric-value info">{{stats.info}}</div>
+            </div>
+            <div class="metric-card">
+                <div class="metric-label">Warnings</div>
+                <div class="metric-value warn">{{stats.warn}}</div>
+            </div>
+            <div class="metric-card">
+                <div class="metric-label">Errors</div>
+                <div class="metric-value error">{{stats.error}}</div>
+            </div>
+        </div>
+
+        <!-- Toolbar -->
+        <div class="toolbar">
+            <input type="text" id="search" placeholder="Search messages, emails, user IDs..." oninput="render()">
+            <select id="levelFilter" onchange="render()">
+                <option value="">All levels</option>
+                <option value="info">Info</option>
+                <option value="warn">Warn</option>
+                <option value="error">Error</option>
+            </select>
+            <select id="sort" onchange="render()">
+                <option value="desc">Newest first</option>
+                <option value="asc">Oldest first</option>
+            </select>
+            <button class="btn-clear" onclick="resetFilters()">Clear filters</button>
+        </div>
+
+        <!-- Table -->
+        <div class="table-wrap">
+            <table>
+                <thead>
+                    <tr>
+                        <th style="width:150px">Timestamp</th>
+                        <th style="width:100px">Level</th>
+                        <th>Message</th>
+                        <th>Details</th>
+                    </tr>
+                </thead>
+                <tbody id="logBody"></tbody>
+            </table>
+            <div id="emptyState" class="empty-state" style="display:none">No entries match your filters.</div>
+            <div class="pagination">
+                <span id="pageInfo"></span>
+                <div class="pagination-btns">
+                    <button class="page-btn" id="btnPrev" onclick="changePage(-1)">← Prev</button>
+                    <button class="page-btn" id="btnNext" onclick="changePage(1)">Next →</button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Inject log data from server -->
+        <script>
+            const LOG_DATA = {{{json logs}}};
+        </script>
+
+        <script src="/JS/logs.js"></script>
+    </body>
+</html>

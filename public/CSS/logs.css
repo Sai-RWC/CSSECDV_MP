@@ -1,0 +1,189 @@
+* { box-sizing: border-box; }
+
+body {
+    background: #f0fdf4;
+    font-family: 'Segoe UI', sans-serif;
+    color: #1a1a1a;
+    min-height: 100vh;
+    padding: 2rem;
+}
+
+.page-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 1.5rem;
+}
+
+.page-title {
+    font-size: 1.5rem;
+    font-weight: 600;
+    color: #064e3b;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.page-title svg { width: 22px; height: 22px; }
+
+.back-link {
+    font-size: 0.85rem;
+    color: #065f46;
+    text-decoration: none;
+    display: flex;
+    align-items: center;
+    gap: 4px;
+}
+.back-link:hover { text-decoration: underline; }
+
+/* Metric cards */
+.metrics {
+    display: grid;
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    gap: 12px;
+    margin-bottom: 1.5rem;
+}
+.metric-card {
+    background: #fff;
+    border-radius: 12px;
+    padding: 1rem 1.25rem;
+    border: 1px solid #d1fae5;
+}
+.metric-label {
+    font-size: 2.00rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    color: #6b7280;
+    margin-bottom: 4px;
+}
+.metric-value {
+    font-size: 2.75rem;
+    font-weight: 600;
+    line-height: 1;
+}
+.metric-value.total  { color: #064e3b; }
+.metric-value.info   { color: #0369a1; }
+.metric-value.warn   { color: #b45309; }
+.metric-value.error  { color: #b91c1c; }
+
+/* Toolbar */
+.toolbar {
+    display: flex;
+    gap: 8px;
+    flex-wrap: wrap;
+    margin-bottom: 1rem;
+    align-items: center;
+}
+.toolbar input[type=text] {
+    flex: 1;
+    min-width: 180px;
+    padding: 0.45rem 0.85rem;
+    border-radius: 999px;
+    border: 1px solid #a7f3d0;
+    background: #fff;
+    font-size: 2rem;
+    outline: none;
+}
+.toolbar input[type=text]:focus { border-color: #059669; }
+.toolbar select {
+    padding: 0.45rem 0.75rem;
+    border-radius: 999px;
+    border: 1px solid #a7f3d0;
+    background: #fff;
+    font-size: 2rem;
+    outline: none;
+    cursor: pointer;
+}
+.toolbar select:focus { border-color: #059669; }
+.btn-clear {
+    padding: 0.45rem 1rem;
+    border-radius: 999px;
+    background: none;
+    border: 1px solid #a7f3d0;
+    font-size: 2rem;
+    transition: background 0.15s;
+}
+.btn-clear:hover { background: #d1fae5; }
+
+/* Table */
+.table-wrap {
+    background: #fff;
+    border-radius: 12px;
+    border: 1px solid #d1fae5;
+    overflow: hidden;
+}
+table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 1.05rem;
+}
+thead th {
+    font-size: 1.60rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    color: #6b7280;
+    padding: 10px 14px;
+    background: #f0fdf4;
+    border-bottom: 1px solid #d1fae5;
+    text-align: left;
+}
+tbody tr { border-bottom: 1px solid #f0fdf4; transition: background 0.1s; }
+tbody tr:last-child { border-bottom: none; }
+tbody tr:hover { background: #f0fdf4; }
+td { padding: 9px 14px; vertical-align: middle; }
+
+.ts {
+    font-family: monospace;
+    font-size: 1.40rem;
+    color: #6b7280;
+    white-space: nowrap;
+}
+
+.badge {
+    display: inline-block;
+    font-size: 1.10rem;
+    font-weight: 600;
+    padding: 2px 9px;
+    border-radius: 999px;
+}
+.badge-info  { background: #dbeafe; color: #1e40af; }
+.badge-warn  { background: #fef3c7; color: #92400e; }
+.badge-error { background: #fee2e2; color: #991b1b; }
+
+.meta { font-size: 1.40rem; color: #6b7280; }
+.msg  { font-size: 1.40rem; color: #111827; }
+.no-msg { color: #9ca3af; font-style: italic; }
+
+/* Pagination */
+.pagination {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 10px 14px;
+    border-top: 1px solid #d1fae5;
+    font-size: 1.40rem;
+    color: #6b7280;
+    background: #f9fafb;
+}
+.pagination-btns { display: flex; gap: 6px; }
+.page-btn {
+    padding: 4px 12px;
+    border-radius: 999px;
+    border: 1px solid #a7f3d0;
+    background: #fff;
+    font-size: 1.40rem;
+    cursor: pointer;
+    color: #065f46;
+    transition: background 0.15s;
+}
+.page-btn:hover:not(:disabled) { background: #d1fae5; }
+.page-btn:disabled { opacity: 0.4; cursor: default; }
+
+.empty-state {
+    text-align: center;
+    padding: 2.5rem;
+    color: #9ca3af;
+    font-size: 1.40rem;
+}

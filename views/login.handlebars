@@ -24,8 +24,18 @@
                 <span>Remember me for 3 weeks</span>
             </label>
 
+            {{#if error}}
+            <div class="w-64 px-4 py-2 rounded-full bg-red-500/80 text-white text-sm text-center shadow-md">
+                {{error}}
+            </div>
+            {{/if}}
+
             <p class="text-white text-sm">
-            No account yet? <a href="/register" class="underline">Create Account</a>
+                No account yet? <a href="/register" class="underline">Create Account</a>
+            </p>
+
+            <p class="text-white text-sm">
+                <a href="/forgot-password" class="underline">Forgot password?</a>
             </p>
 
             <button type="submit"
@@ -33,12 +43,6 @@
                 Log in
             </button>
         </form>
-
-        <script>
-            {{#if error}}
-            alert("Invalid email/password"); 
-            {{/if}} 
-        </script>
         <script src="/JS/login.js"></script>
     </body>
 </html>

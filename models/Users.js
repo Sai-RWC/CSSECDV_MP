@@ -24,9 +24,10 @@ const userSchema = new mongoose.Schema({
         required: true
     },
     // might update this into role 
-    isTech: {
-        type: Boolean,
-        required: true
+    role: {
+        type: String,
+        enum: ['user', 'admin', 'moderator'],
+        default: 'user'
     },
     numAttempts: {
         type: Number,

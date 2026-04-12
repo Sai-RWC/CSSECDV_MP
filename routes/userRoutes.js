@@ -1,7 +1,7 @@
 const express = require('express');
 const router = express.Router();
 const userController = require('../controllers/userController');
-const { isAuthenticated, isStudent, isTechnician } = require('../middleware/auth');
+const { isAuthenticated, isStudent, isAdmin } = require('../middleware/auth');
 
 router.get('/viewprofile/:idNum', isAuthenticated, userController.getViewProfileStudent);
 router.get('/MyProfile', isAuthenticated, userController.getMyProfile);

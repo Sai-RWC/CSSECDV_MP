@@ -28,7 +28,7 @@ transition-transform duration-300 sidebar" id="sidebar">
 
     <hr class="border border-[#ccc] w-full my-4" />
 
-    {{#if user.isTech}}
+    {{#if user.isAdmin}}
 
     <!-- Technician Create Reservation -->
     <a href="/Tcreatereserve" class="px-4 py-3 block no-underline font-dongle-light 
@@ -40,6 +40,11 @@ transition-transform duration-300 sidebar" id="sidebar">
     <a href="/tfilterreservs" class="px-4 py-3 block no-underline 
     font-dongle-light text-[2vw] text-white transition-colors duration-300 hover:text-[#14AE5C]">
     View Reservations
+    </a>
+
+    <a href="/admin/logs" class="px-4 py-3 block no-underline 
+    font-dongle-light text-[2vw] text-white transition-colors duration-300 hover:text-[#14AE5C]">
+    View Logs
     </a>
 
     {{else}}    
