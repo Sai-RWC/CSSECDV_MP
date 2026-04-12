@@ -159,8 +159,9 @@ exports.postRegister = async (req, res) => {
         await newUser.save();
         res.redirect('/login');
     } catch (err) {
-        await logError(err, 'authController.postRegister');
-        console.error(err);
+        logger.error(err.message);
+        // await logError(err, 'authController.postRegister');
+        // console.error(err);
         res.send('Registration failed');
     }
 };

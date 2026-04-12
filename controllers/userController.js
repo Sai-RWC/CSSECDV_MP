@@ -37,9 +37,10 @@ exports.getViewProfileStudent = async (req, res) => {
         res.render('viewprofile', {
             title: 'Labubuddy | View Profile',
             roleTitle: 'Student',
-            user: user,
+            user: req.session.user,
+            view: user,
             reservations: transformedReservations,
-            isAdmin: req.session.user.role === 'admin'  
+            isAdmin: req.session.user.role === 'admin'
         });
     } catch (error) {
         logger.error(error.message);
@@ -60,6 +61,7 @@ exports.getMyProfile = async (req, res) => {
         const user = await UserSchema.findById(userId).lean();
 
         if (!user) {
+            logger.error('User not found');
             return res.status(404).render('error', { 
                 title: 'User Not Found',
                 currentUser: req.session.user 
@@ -83,12 +85,11 @@ exports.getMyProfile = async (req, res) => {
             title: 'Labubuddy | My Profile',
             roleTitle: user.role,
             user: req.session.user,
-            currentUser: req.session.user,
+            view: user,
             reservations: transformedReservations,  // Use transformed reservations
             isOwnProfile: req.session.user.id === user._id.toString(),
-            isAdmin: req.session.user.isAdmin
+            isAdmin: req.session.user.role === 'admin'
         });
-        console.log(`isAdmin viewprofile: ${req.sesion.user.isAdmin}`);
 
     } catch (error) {
         logger.error(error.message);
@@ -388,3 +389,21 @@ exports.deleteAccount = async (req, res) => {
     }
 };
 
+// controllers/userController.js
+exports.changeRole = async (req, res) => {
+    const { userId, role } = req.body;
+    const validRoles = ['user', 'moderator', 'admin'];
+
+    if (!validRoles.includes(role)) {
+        logger.warn('Invalid role change', {userid:req.session.user._id, toRole: role});
+        return res.status(400).send('Invalid role');
+
+    }
+
+    await UserSchema.findByIdAndUpdate(userId, { role });
+    logger.info('Role changed', { changedBy: req.session.user.id, targetUser: userId, newRole: role });
+    // req.flash('success', 'Role updated successfully.');
+    // res.redirect('/');
+    const backURL = req.get('Referer') || '/';
+    res.redirect(backURL);
+};

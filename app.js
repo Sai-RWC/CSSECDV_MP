@@ -4,6 +4,7 @@ const session = require('express-session');
 const mongoose = require('mongoose');
 const path = require('path');
 const morgan = require('morgan');
+const flash = require('connect-flash');
 
 const authRoutes = require('./routes/authRoutes');
 const userRoutes = require('./routes/userRoutes');
@@ -42,6 +43,13 @@ app.use('/', reservationRoutes);
 app.use('/', iframeRoutes);
 app.use('/', adminRoutes);
 
+app.use(flash());                
+
+app.use((req, res, next) => {   
+    res.locals.flashSuccess = req.flash('success');
+    res.locals.flashError   = req.flash('error');
+    next();
+});
 
 // MongoDB connection
 mongoose.connect('mongodb://127.0.0.1:27017/myapp')

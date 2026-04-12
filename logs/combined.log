@@ -109,3 +109,42 @@
 {"level":"info","message":"Server started","timestamp":"2026-04-12T17:11:13.779Z"}
 {"level":"error","message":"Cannot read properties of undefined (reading 'user')","timestamp":"2026-04-12T17:11:19.760Z"}
 {"level":"error","message":"Cannot read properties of undefined (reading 'user')","timestamp":"2026-04-12T17:11:37.611Z"}
+{"level":"info","message":"Server started","timestamp":"2026-04-12T17:13:35.418Z"}
+{"level":"info","message":"Server started","timestamp":"2026-04-12T17:13:36.694Z"}
+{"level":"info","message":"Server started","timestamp":"2026-04-12T17:13:40.425Z"}
+{"level":"error","message":"Cannot read properties of undefined (reading 'user')","timestamp":"2026-04-12T17:13:44.940Z"}
+{"level":"info","message":"Server started","timestamp":"2026-04-12T17:14:17.014Z"}
+{"level":"error","message":"Cannot read properties of undefined (reading 'user')","timestamp":"2026-04-12T17:14:22.158Z"}
+{"level":"info","message":"Server started","timestamp":"2026-04-12T17:15:04.984Z"}
+{"level":"info","message":"Server started","timestamp":"2026-04-12T17:15:35.056Z"}
+{"level":"info","message":"Server started","timestamp":"2026-04-12T17:15:59.651Z"}
+{"level":"info","message":"Server started","timestamp":"2026-04-12T17:16:20.796Z"}
+{"level":"info","message":"Server started","timestamp":"2026-04-12T17:20:54.313Z"}
+{"level":"info","message":"Server started","timestamp":"2026-04-12T17:30:55.876Z"}
+{"level":"info","message":"Server started","timestamp":"2026-04-12T17:32:05.924Z"}
+{"level":"info","message":"Server started","timestamp":"2026-04-12T17:32:12.636Z"}
+{"level":"info","message":"Server started","timestamp":"2026-04-12T17:32:38.443Z"}
+{"level":"info","message":"Server started","timestamp":"2026-04-12T17:33:00.019Z"}
+{"level":"info","message":"Server started","timestamp":"2026-04-12T17:33:18.745Z"}
+{"level":"info","message":"Server started","timestamp":"2026-04-12T17:33:43.845Z"}
+{"level":"info","message":"Server started","timestamp":"2026-04-12T17:34:47.922Z"}
+{"level":"info","message":"Server started","timestamp":"2026-04-12T17:35:02.558Z"}
+{"level":"info","message":"Server started","timestamp":"2026-04-12T17:35:47.730Z"}
+{"level":"info","message":"Server started","timestamp":"2026-04-12T17:36:45.153Z"}
+{"level":"info","message":"Server started","timestamp":"2026-04-12T17:37:31.950Z"}
+{"level":"info","message":"Server started","timestamp":"2026-04-12T17:37:51.127Z"}
+{"level":"info","message":"Server started","timestamp":"2026-04-12T17:38:08.603Z"}
+{"changedBy":"69dbcbf10a8910b4eb89311d","level":"info","message":"Role changed","newRole":"technician","targetUser":"69dbcbf10a8910b4eb893119","timestamp":"2026-04-12T17:38:22.474Z"}
+{"level":"info","message":"Server started","timestamp":"2026-04-12T17:38:47.363Z"}
+{"changedBy":"69dbcbf10a8910b4eb89311d","level":"info","message":"Role changed","newRole":"technician","targetUser":"69dbcbf10a8910b4eb89311a","timestamp":"2026-04-12T17:39:16.203Z"}
+{"level":"info","message":"Server started","timestamp":"2026-04-12T17:40:22.030Z"}
+{"changedBy":"69dbcbf10a8910b4eb89311d","level":"info","message":"Role changed","newRole":"student","targetUser":"69dbcbf10a8910b4eb893119","timestamp":"2026-04-12T17:40:28.119Z"}
+{"level":"info","message":"Server started","timestamp":"2026-04-12T17:40:49.352Z"}
+{"changedBy":"69dbcbf10a8910b4eb89311d","level":"info","message":"Role changed","newRole":"student","targetUser":"69dbcbf10a8910b4eb89311a","timestamp":"2026-04-12T17:40:55.846Z"}
+{"level":"info","message":"Server started","timestamp":"2026-04-12T17:42:12.480Z"}
+{"changedBy":"69dbcbf10a8910b4eb89311d","level":"info","message":"Role changed","newRole":"technician","targetUser":"69dbcbf10a8910b4eb89311b","timestamp":"2026-04-12T17:42:45.333Z"}
+{"level":"info","message":"Server started","timestamp":"2026-04-12T17:44:36.960Z"}
+{"level":"info","message":"Server started","timestamp":"2026-04-12T17:50:05.967Z"}
+{"changedBy":"69dbcbf10a8910b4eb89311d","level":"info","message":"Role changed","newRole":"moderator","targetUser":"69dbcbf10a8910b4eb89311b","timestamp":"2026-04-12T17:50:19.782Z"}
+{"changedBy":"69dbcbf10a8910b4eb89311d","level":"info","message":"Role changed","newRole":"admin","targetUser":"69dbcbf10a8910b4eb89311b","timestamp":"2026-04-12T17:50:21.478Z"}
+{"changedBy":"69dbcbf10a8910b4eb89311d","level":"info","message":"Role changed","newRole":"user","targetUser":"69dbcbf10a8910b4eb89311b","timestamp":"2026-04-12T17:50:22.828Z"}
