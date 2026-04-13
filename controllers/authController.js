@@ -131,7 +131,7 @@ exports.getRegister = (req, res) => {
 };
 
 exports.postRegister = async (req, res) => {
-    const { fname, lname, email, password, confirmPassword, idNum, securityQuestion, securityAnswer } = req.body;
+    let { fname, lname, email, password, confirmPassword, idNum, securityQuestion, securityAnswer } = req.body;
 
     //Trimming
     email = email.trim().toLowerCase();
