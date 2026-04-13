@@ -201,3 +201,98 @@ exports.postRegister = async (req, res) => {
         res.send('Registration failed');
     }
 };
+
+exports.postForgotPassword = async (req, res) => {
+    let { email, securityQuestion, securityAnswer, newPassword } = req.body;
+
+    try {
+        email = email.trim().toLowerCase();
+        securityAnswer = securityAnswer.trim().toLowerCase();
+
+        const user = await UserSchema.findOne({ email });
+
+        // ❌ generic response only
+        if (!user) {
+            logger.warn('Forgot password failed: user not found', { email, ip: req.ip });
+            return res.render('forgetpassword', {
+                error: 'Invalid credentials or request failed',
+                success: null
+            });
+        }
+
+        if (user.securityQuestion !== securityQuestion) {
+            logger.warn('Forgot password failed: security question mismatch', {
+                userId: user._id,
+                email,
+                ip: req.ip
+            });
+
+            return res.render('forgetpassword', {
+                error: 'Invalid credentials or request failed',
+                success: null
+            });
+        }
+
+        const isAnswerMatch = await bcrypt.compare(securityAnswer, user.securityAnswer);
+
+        if (!isAnswerMatch) {
+            logger.warn('Forgot password failed: wrong security answer', {
+                userId: user._id,
+                email,
+                ip: req.ip
+            });
+
+            return res.render('forgetpassword', {
+                error: 'Invalid credentials or request failed',
+                success: null
+            });
+        }
+
+        const passwordPattern = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[\W_]).{8,28}$/;
+
+        if (!passwordPattern.test(newPassword)) {
+            logger.warn('Forgot password failed: weak password', {
+                userId: user._id,
+                email
+            });
+
+            return res.render('forgetpassword', {
+                error: 'Invalid credentials or request failed',
+                success: null
+            });
+        }
+
+        const hashedPassword = await bcrypt.hash(newPassword, 10);
+
+        user.prevPass = user.prevPass || [];
+        if (user.prevPass.length >= 3) user.prevPass.shift();
+        user.prevPass.push(user.password);
+
+        user.password = hashedPassword;
+
+        await user.save();
+
+        logger.info('Password reset successful', {
+            userId: user._id,
+            email
+        });
+
+        return res.render('forgetpassword', {
+            error: null,
+            success: 'Password successfully updated. You can now log in.'
+        });
+
+    } catch (err) {
+        logger.error('Forgot password system error', {
+            message: err.message,
+            stack: err.stack,
+            email,
+            ip: req.ip
+        });
+
+        return res.render('forgetpassword', {
+            error: 'Invalid credentials or request failed',
+            success: null
+        });
+    }
+};
