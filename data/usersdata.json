@@ -5,6 +5,8 @@
     "idNum": 12304567,
     "email": "timothy_ortiz@dlsu.edu.ph",
     "password": "iLoveChikkieNuggies123", 
+    "securityQuestion": "first_username",
+    "securityAnswer": "timmyO123",
     "role": "user", 
     "profPic": "", 
     "profDesc": "DLSU ID 123 BS-IT" 
@@ -15,6 +17,8 @@
     "idNum": 12406543,
     "email": "maricarmen_antonio@dlsu.edu.ph",
     "password": "L0K1MYL0VE<33", 
+    "securityQuestion": "pet_registered_name",
+    "securityAnswer": "lokiTheDog",
     "role": "user", 
     "profPic": "", 
     "profDesc": "DLSU ID 121 BSCS-ST" 
@@ -25,6 +29,8 @@
     "idNum": 12209753,
     "email": "amadeo_espinoza@dlsu.edu.ph",
     "password": "M4R1CARM3N_4_L1F3!", 
+    "securityQuestion": "first_phone_model",
+    "securityAnswer": "nokia3310",
     "role": "user", 
     "profPic": "", 
     "profDesc": "DLSU ID 122 BSCS-ST" 
@@ -35,6 +41,8 @@
     "idNum": 12002486,
     "email": "daisy_reyes@dlsu.edu.ph",
     "password": "P4SSW0RD123456!", 
+    "securityQuestion": "childhood_street",
+    "securityAnswer": "sampaguitaStreet",
     "role": "user", 
     "profPic": "", 
     "profDesc": "DLSU ID 124 BSCS-NIS" 
@@ -45,6 +53,8 @@
     "idNum": 12103579,
     "email": "laurissa_wayne@dlsu.edu.ph",
     "password": "insertPasswordH3R3", 
+    "securityQuestion": "first_school_org",
+    "securityAnswer": "computerSociety",
     "role": "moderator", 
     "profPic": "", 
     "profDesc": "DLSU ID 121 BS-IT" 
@@ -55,6 +65,8 @@
     "idNum": 11907476,
     "email": "loki_lopez@dlsu.edu.ph",
     "password": "THORisF4T!!!", 
+    "securityQuestion": "router_model",
+    "securityAnswer": "tplinkArcherC6",
     "role": "admin",
     "profPic": "/Assets/images/technician.png", 
     "profDesc": "Reservation Technician" 

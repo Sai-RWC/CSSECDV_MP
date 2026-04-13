@@ -7,11 +7,12 @@ const ReserveSchema = require('./models/Reservations');
 const SeatSchema = require('./models/Seats');
 const LabSchema = require('./models/Labs');
 
-// For loading pre-made data
+const bcrypt = require('bcrypt');
+
 const seedDatabase = async () => {
   await mongoose.connect('mongodb://127.0.0.1:27017/myapp');
 
-  // Clear schema's existing data
+  // Clear existing data
   await UserSchema.deleteMany({});
   await ReserveSchema.deleteMany({});
   await SeatSchema.deleteMany({});
@@ -22,38 +23,58 @@ const seedDatabase = async () => {
   const seatsdata = require('./data/seatsdata.json');
   const labsdata = require('./data/labsdata.json');
 
-  const bcrypt = require('bcrypt');
-
+  //Hash password + security answer
   for (const user of usersdata) {
+    // Normalize fields
+    user.email = user.email.trim().toLowerCase();
+    user.fName = user.fName.trim();
+    user.lName = user.lName.trim();
+
+    // Hash password
     const hashedPassword = await bcrypt.hash(user.password, 10);
     user.password = hashedPassword;
+
+    // Ensure security question exists
+    if (!user.securityQuestion) {
+      user.securityQuestion = "first_username";
+    }
+
+    // Ensure security answer exists
+    if (!user.securityAnswer) {
+      user.securityAnswer = "defaultanswer";
+    }
+
+    // Normalize + hash security answer
+    const normalizedAnswer = user.securityAnswer.trim().toLowerCase();
+    const hashedAnswer = await bcrypt.hash(normalizedAnswer, 10);
+    user.securityAnswer = hashedAnswer;
   }
 
+  // Insert base data
   await UserSchema.insertMany(usersdata);
   await SeatSchema.insertMany(seatsdata);
   await LabSchema.insertMany(labsdata);
 
-  // Take dynamic JSON files
-  const reservedata = JSON.parse(fs.readFileSync(path.join(__dirname, 'data/reservedata.json'), 'utf-8'));
+  // Load reservation data
+  const reservedata = JSON.parse(
+    fs.readFileSync(path.join(__dirname, 'data/reservedata.json'), 'utf-8')
+  );
 
-  // Replacing reservations' null values
   for (const reserve of reservedata) {
+    // Find user
+    const user = await UserSchema.findOne({ idNum: reserve.userIdNum }).exec();
 
-    // finding userID
-    const userSchoolId = reserve.userIdNum;
-    const user = await UserSchema.findOne({ idNum : userSchoolId }).exec();
+    // Parse lab + seat
+    const [labNamePart, seatCodePart] = reserve.slotName.split(', seat ');
 
-    // finding lab and seat ids
-    const [ labNamePart, seatCodePart ] = reserve.slotName.split(', seat ');
-
-    const lab = await LabSchema.findOne({ labName : labNamePart }).exec();
+    const lab = await LabSchema.findOne({ labName: labNamePart }).exec();
     const seat = await SeatSchema.findOne({ seatCode: seatCodePart }).exec();
 
-    // for dates
+    // Date handling
     const now = new Date();
     const userReservDate = new Date(now.toISOString().split('T')[0]);
-    
-    // initializing reservations
+
+    // Create reservation
     const newRes = new ReserveSchema({
       userID: user._id,
       userIdNum: reserve.userIdNum,
@@ -66,12 +87,18 @@ const seedDatabase = async () => {
       reservDate: userReservDate,
       reqMade: new Date()
     });
+
     await newRes.save();
   }
-}
+};
 
 (async () => {
-  await seedDatabase();
-  console.log('Database seeded!');
-  process.exit();
+  try {
+    await seedDatabase();
+    console.log('Database seeded with security questions!');
+    process.exit();
+  } catch (err) {
+    console.error(err);
+    process.exit(1);
+  }
 })();

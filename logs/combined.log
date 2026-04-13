@@ -189,3 +189,7 @@
 {"level":"info","message":"Server started","timestamp":"2026-04-13T15:12:42.752Z"}
 {"level":"info","message":"Server started","timestamp":"2026-04-13T15:17:04.151Z"}
 {"email":"dsasdasd@poopoo.aad","ip":"::ffff:127.0.0.1","level":"warn","message":"Forgot password failed: security question mismatch","timestamp":"2026-04-13T15:17:29.407Z","userId":"69dd0822218f51073dd98451"}
+{"email":"dsasdasd@poopoo.aad","level":"info","message":"Password reset successful","timestamp":"2026-04-13T15:33:49.827Z","userId":"69dd0822218f51073dd98451"}
+{"level":"info","message":"Server started","timestamp":"2026-04-13T15:58:01.059Z"}
+{"id":"69dd1281994b702579d009d7","ip":"::ffff:127.0.0.1","level":"warn","message":"Unauthorized Access Attempt","timestamp":"2026-04-13T15:58:57.390Z","url":"/createreserve/12304567"}
+{"id":"69dd1281994b702579d009d9","ip":"::ffff:127.0.0.1","level":"warn","message":"Unauthorized Access Attempt","timestamp":"2026-04-13T15:59:23.946Z","url":"/createreserve/12209753"}
