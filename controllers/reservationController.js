@@ -73,6 +73,7 @@ exports.getCreateResStudent = (req, res) => {
     res.render('createreserve', { 
         title: 'Labubuddy | Reserve',
         roleTitle: 'Student',
+        // user: req.session.user,
         success: req.query.success === 'true',
         labs: labs
     });
