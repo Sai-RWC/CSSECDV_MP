@@ -35,6 +35,30 @@
     <input type="password" name="password" placeholder="Password" class="w-64 px-4 py-2 rounded-full outline-none shadow-lg" required />
     <input type="password" name="confirmPassword" placeholder="Confirm Password" class="w-64 px-4 py-2 rounded-full outline-none shadow-lg" required />
 
+
+    
+    <label class="text-white text-sm font-semibold">Password Reset Question</label>
+
+    
+    
+    <select name="securityQuestion"
+      class="w-64 px-4 py-2 rounded-full outline-none shadow-lg"
+      required>
+      <option value="" disabled selected>Select a security question</option>
+      <option value="school_id_format">What was the exact format of your first school ID number (e.g., YYYY-XXXX, YY-DEP-XXXX)?</option>
+      <option value="pet_registered_name">What was the official registered name of your first pet as written in veterinary records (exact spelling)?</option>
+      <option value="first_phone_model">What was the exact model number of your first mobile phone (as printed on the device or box)?</option>
+      <option value="first_pc_model">What was the full model designation of your first personal computer or laptop?</option>
+      <option value="first_username">What was the exact username you first created that is still historically recoverable (no variations allowed)?</option>
+      <option value="childhood_street">What was the exact street name (not city) of your childhood home address?</option>
+      <option value="router_model">What was the exact router model number of your first home internet setup?</option>
+      <option value="first_device_model">What was the exact product or device model number of your first personal electronic device?</option>
+      <option value="first_community">What was the exact name of the first forum, game server, or online community you actively joined for more than one month?</option>
+      <option value="first_school_org">What was the exact official name of your first school organization, club, or extracurricular group you joined?</option>
+    </select>
+
+    <input type="text" name="securityAnswer" placeholder="Answer" class="w-64 px-4 py-2 rounded-full outline-none shadow-lg mt-2" required />
+
     <p class="text-white text-sm">Already have an account? <a href="/login" class="underline">Log in</a></p>
 
     <button type="submit"

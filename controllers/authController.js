@@ -20,6 +20,15 @@ exports.getLogin = (req, res) => {
     });
 };
 
+exports.getForgotPassword = (req, res) => {
+    res.render('forgetpassword', {
+        title: 'Labubuddy | Forgot Password',
+        layout: false,
+        error: null,
+        success: null
+    });
+};
+
 exports.postLogin = async (req, res) => {
     const { email, password, rememberMe } = req.body;
 
@@ -122,15 +131,25 @@ exports.getRegister = (req, res) => {
 };
 
 exports.postRegister = async (req, res) => {
-    // https://www.geeksforgeeks.org/javascript/javascript-program-to-validate-password-using-regular-expressions/
-    const { fname, lname, email, password, confirmPassword, idNum } = req.body;
+    const { fname, lname, email, password, confirmPassword, idNum, securityQuestion, securityAnswer } = req.body;
+
+    //Trimming
+    email = email.trim().toLowerCase();
+    securityAnswer = securityAnswer.trim().toLowerCase();
+    fname = fname.trim();
+    lname = lname.trim();
 
     if (password !== confirmPassword) {
         return res.send('Passwords do not match');
     }
 
+    //Prevent Reuse
+    if (securityAnswer.toLowerCase() === password.toLowerCase()) {
+        return res.send('Security answer cannot match password');
+    }
+
     // Validate idNum format
-    const idNumPattern = /^1\d{7}/;
+    const idNumPattern = /^1\d{7}$/;
 
     if (!idNumPattern.test(idNum)) {
         return res.send('Invalid ID Number format. Must be 8 digits, start with 1, and include valid entry year (e.g., 12345678)');
@@ -139,15 +158,15 @@ exports.postRegister = async (req, res) => {
     // Validate password format
     const passwordPattern = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[\W_]).{8,28}$/;
 
-    // Password format:
-    // - Must be 8 to 28 characters long
-    // - Must contain at least 1 uppercase letter (A–Z)
-    // - Must contain at least 1 lowercase letter (a–z)
-    // - Must contain at least 1 number (0–9)
-    // - Must contain at least 1 special character (e.g. !@#$%^&* etc.)
-
     if (!passwordPattern.test(password)) {
         return res.send('Password must be 8 to 28 characters and include at least an uppercase, lowercase, number, and special character');
+    }
+
+    // Validate security answer 
+    const securityAnswerPattern = /^[a-zA-Z0-9\s\-_.,'"]{2,100}$/;
+
+    if (!securityAnswerPattern.test(securityAnswer)) {
+        return res.send('Invalid security answer format');
     }
 
     try {
@@ -156,8 +175,11 @@ exports.postRegister = async (req, res) => {
             return res.send('An account with this email already exists');
         }
 
-        // Hash the password before saving
+        // Hash password
         const hashedPassword = await bcrypt.hash(password, 10);
+
+        // Hash security answer
+        const hashedSecurityAnswer = await bcrypt.hash(securityAnswer, 10);
 
         const newUser = new UserSchema({
             fName: fname,
@@ -165,16 +187,17 @@ exports.postRegister = async (req, res) => {
             email,
             password: hashedPassword,
             idNum,
+            securityQuestion,
+            securityAnswer: hashedSecurityAnswer,
             profPic: '',
             profDesc: ''
         });
 
         await newUser.save();
         res.redirect('/login');
+
     } catch (err) {
         logger.error(err.message);
-        // await logError(err, 'authController.postRegister');
-        // console.error(err);
         res.send('Registration failed');
     }
 };
