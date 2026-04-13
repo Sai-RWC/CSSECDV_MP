@@ -136,6 +136,20 @@ exports.postRegister = async (req, res) => {
         return res.send('Invalid ID Number format. Must be 8 digits, start with 1, and include valid entry year (e.g., 12345678)');
     }
 
+    // Validate password format
+    const passwordPattern = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[\W_]).{8,28}$/;
+
+    // Password format:
+    // - Must be 8 to 28 characters long
+    // - Must contain at least 1 uppercase letter (A–Z)
+    // - Must contain at least 1 lowercase letter (a–z)
+    // - Must contain at least 1 number (0–9)
+    // - Must contain at least 1 special character (e.g. !@#$%^&* etc.)
+
+    if (!passwordPattern.test(password)) {
+        return res.send('Password must be 8 to 28 characters and include at least an uppercase, lowercase, number, and special character');
+    }
+
     try {
         const existingUser = await UserSchema.findOne({ email });
         if (existingUser) {
