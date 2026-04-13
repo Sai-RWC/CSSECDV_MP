@@ -179,3 +179,67 @@
 {"level":"info","message":"Server started","timestamp":"2026-04-12T18:00:56.871Z"}
 {"level":"info","message":"Server started","timestamp":"2026-04-12T18:00:58.347Z"}
 {"level":"info","message":"Server started","timestamp":"2026-04-12T20:45:41.284Z"}
+{"level":"info","message":"Server started","timestamp":"2026-04-13T16:02:08.789Z"}
+{"id":"69dd137df03ba59c914cad4e","ip":"::1","level":"warn","message":"Unauthorized Access Attempt","timestamp":"2026-04-13T16:03:15.126Z","url":"/createreserve/12406543"}
+{"id":"69dd137df03ba59c914cad4e","ip":"::1","level":"warn","message":"Unauthorized Access Attempt","timestamp":"2026-04-13T16:04:57.917Z","url":"/createreserve/12406543"}
+{"id":"69dd137df03ba59c914cad4e","ip":"::1","level":"warn","message":"Unauthorized Access Attempt","timestamp":"2026-04-13T16:05:08.073Z","url":"/createreserve/12406543"}
+{"id":"69dd137df03ba59c914cad4e","ip":"::1","level":"warn","message":"Unauthorized Access Attempt","timestamp":"2026-04-13T16:05:10.714Z","url":"/viewreservs/12406543"}
+{"id":"69dd137df03ba59c914cad4e","ip":"::1","level":"warn","message":"Unauthorized Access Attempt","timestamp":"2026-04-13T16:09:56.035Z","url":"/createreserve/12406543"}
+{"id":"69dd137df03ba59c914cad4e","ip":"::1","level":"warn","message":"Unauthorized Access Attempt","timestamp":"2026-04-13T16:11:18.322Z","url":"/createreserve/12406543"}
+{"id":"69dd137df03ba59c914cad4e","ip":"::1","level":"warn","message":"Unauthorized Access Attempt","timestamp":"2026-04-13T16:12:51.632Z","url":"/createreserve/12406543"}
+{"id":"69dd137df03ba59c914cad4e","ip":"::1","level":"warn","message":"Unauthorized Access Attempt","timestamp":"2026-04-13T16:13:03.201Z","url":"/createreserve/12406543"}
+{"level":"info","message":"Server started","timestamp":"2026-04-13T16:13:45.845Z"}
+{"id":"69dd137df03ba59c914cad4e","ip":"::1","level":"warn","message":"Unauthorized Access Attempt","timestamp":"2026-04-13T16:15:00.628Z","url":"/createreserve/12406543"}
+{"id":"69dd137df03ba59c914cad4e","ip":"::1","level":"warn","message":"Unauthorized Access Attempt","timestamp":"2026-04-13T16:15:03.334Z","url":"/viewreservs/12406543"}
+{"id":"69dd137df03ba59c914cad4e","ip":"::1","level":"warn","message":"Login attempt","timestamp":"2026-04-13T16:15:41.531Z"}
+{"id":"69dd137df03ba59c914cad4d","ip":"::1","level":"warn","message":"Login attempt","timestamp":"2026-04-13T16:16:41.457Z"}
+{"id":"69dd137df03ba59c914cad4d","ip":"::1","level":"warn","message":"Login attempt","timestamp":"2026-04-13T16:16:43.433Z"}
+{"id":"69dd137df03ba59c914cad4d","ip":"::1","level":"warn","message":"Login attempt","timestamp":"2026-04-13T16:16:45.249Z"}
+{"id":"69dd137df03ba59c914cad4d","ip":"::1","level":"warn","message":"Login attempt","timestamp":"2026-04-13T16:16:47.443Z"}
+{"id":"69dd137df03ba59c914cad4d","ip":"::1","level":"warn","message":"Login attempt","timestamp":"2026-04-13T16:16:49.603Z"}
+{"id":"69dd137df03ba59c914cad4d","ip":"::1","level":"warn","message":"Login attempt","timestamp":"2026-04-13T16:16:51.806Z"}
+{"id":"69dd137df03ba59c914cad4d","level":"warn","message":"Account is locked","timestamp":"2026-04-13T16:16:51.810Z"}
+{"level":"info","message":"Server started","timestamp":"2026-04-13T16:20:44.544Z"}
+{"attempts":6,"id":"69dd137df03ba59c914cad4d","level":"warn","message":"Account is locked","timestamp":"2026-04-13T16:20:55.288Z"}
+{"attempts":6,"id":"69dd137df03ba59c914cad4d","level":"warn","message":"Account is locked","timestamp":"2026-04-13T16:20:57.842Z"}
+{"id":"69dd137df03ba59c914cad4d","level":"warn","message":"Account is unlocked","timestamp":"2026-04-13T16:22:40.362Z"}
+{"id":"69dd137df03ba59c914cad4d","ip":"::1","level":"warn","message":"Login attempt","timestamp":"2026-04-13T16:22:40.408Z"}
+{"id":"69dd137df03ba59c914cad4d","ip":"::1","level":"warn","message":"Login attempt","timestamp":"2026-04-13T16:22:43.629Z"}
+{"id":"69dd137df03ba59c914cad4d","ip":"::1","level":"warn","message":"Login attempt","timestamp":"2026-04-13T16:22:45.511Z"}
+{"id":"69dd137df03ba59c914cad4d","ip":"::1","level":"warn","message":"Login attempt","timestamp":"2026-04-13T16:22:47.049Z"}
+{"id":"69dd137df03ba59c914cad4d","ip":"::1","level":"warn","message":"Login attempt","timestamp":"2026-04-13T16:22:48.872Z"}
+{"id":"69dd137df03ba59c914cad4d","level":"warn","message":"Account is locked","timestamp":"2026-04-13T16:22:48.873Z"}
+{"level":"info","message":"Server started","timestamp":"2026-04-13T16:27:22.707Z"}
+{"level":"info","message":"Server started","timestamp":"2026-04-13T16:38:29.051Z"}
+{"level":"info","message":"Server started","timestamp":"2026-04-13T16:43:48.337Z"}
+{"level":"info","message":"Server started","timestamp":"2026-04-13T16:48:22.846Z"}
+{"level":"info","message":"Server started","timestamp":"2026-04-13T16:55:13.113Z"}
+{"id":"69dd1fed2709b2aa5d3d01c7","ip":"::1","level":"warn","message":"Login attempt","timestamp":"2026-04-13T17:01:17.743Z"}
+{"level":"info","message":"Server started","timestamp":"2026-04-13T18:24:49.727Z"}
+{"level":"info","message":"Server started","timestamp":"2026-04-13T18:26:33.932Z"}
+{"id":"69dd355602e7c3697f5ffbcb","ip":"::1","level":"warn","message":"Login attempt","timestamp":"2026-04-13T18:26:53.039Z"}
+{"level":"info","message":"Server started","timestamp":"2026-04-13T18:39:41.556Z"}
+{"level":"info","message":"Server started","timestamp":"2026-04-13T18:46:19.851Z"}
+{"level":"info","message":"Server started","timestamp":"2026-04-13T18:48:48.250Z"}
+{"id":"69dd3a8c56d2023d25f80d03","ip":"::1","level":"warn","message":"Login attempt","timestamp":"2026-04-13T18:50:23.060Z"}
+{"level":"info","message":"Server started","timestamp":"2026-04-13T18:54:11.712Z"}
+{"level":"info","message":"Server started","timestamp":"2026-04-13T18:58:02.749Z"}
+{"email":"timothy_ortiz@dlsu.edu.ph","id":"69dd3cb710179e1bc41e59ba","level":"info","message":"Password reset for user","timestamp":"2026-04-13T18:58:34.740Z"}
+{"level":"info","message":"Server started","timestamp":"2026-04-13T19:08:03.138Z"}
+{"id":"69dd3f102e302438316d39d0","ip":"::1","level":"warn","message":"Login attempt","timestamp":"2026-04-13T19:08:25.933Z"}
+{"email":"timothy_ortiz@dlsu.edu.ph","id":"69dd3f102e302438316d39d0","level":"info","message":"Password reset for user","timestamp":"2026-04-13T19:09:25.439Z"}
+{"level":"info","message":"Server started","timestamp":"2026-04-13T19:10:34.386Z"}
+{"email":"timothy_ortiz@dlsu.edu.ph","id":"69dd3fa7a5d94cb2426ddc29","level":"info","message":"Password reset for user","timestamp":"2026-04-13T19:11:16.404Z"}
+{"level":"info","message":"Server started","timestamp":"2026-04-13T19:14:52.697Z"}
+{"email":"timothy_ortiz@dlsu.edu.ph","id":"69dd40a9f0d38c2b93aa3e7e","level":"info","message":"Password reset for user","timestamp":"2026-04-13T19:15:27.637Z"}
+{"level":"info","message":"Server started","timestamp":"2026-04-13T19:20:27.954Z"}
+{"level":"error","message":"req.flash is not a function","timestamp":"2026-04-13T19:21:53.029Z"}
+{"level":"error","message":"req.flash is not a function","timestamp":"2026-04-13T19:21:56.589Z"}
+{"level":"error","message":"req.flash is not a function","timestamp":"2026-04-13T19:22:03.537Z"}
+{"level":"info","message":"Server started","timestamp":"2026-04-13T19:23:54.105Z"}
+{"level":"error","message":"req.flash is not a function","timestamp":"2026-04-13T19:24:44.125Z"}
+{"level":"info","message":"Server started","timestamp":"2026-04-13T19:27:30.554Z"}
+{"level":"info","message":"Server started","timestamp":"2026-04-13T20:36:46.074Z"}
+{"email":"amadeo_espinoza@dlsu.edu.ph","id":"69dd53daea924321d81b39d4","ip":"::1","level":"info","message":"Successful login","timestamp":"2026-04-13T20:37:03.209Z"}
+{"email":"amadeo_espinoza@dlsu.edu.ph","id":"69dd53daea924321d81b39d4","ip":"::1","level":"info","message":"Successful login","timestamp":"2026-04-13T20:37:14.192Z"}
+{"email":"amadeo_espinoza@dlsu.edu.ph","id":"69dd53daea924321d81b39d4","ip":"::1","level":"info","message":"Successful login","timestamp":"2026-04-13T20:37:24.644Z"}

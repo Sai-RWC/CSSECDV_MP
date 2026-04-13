@@ -4,10 +4,12 @@
     "lName": "Ortiz", 
     "idNum": 12304567,
     "email": "timothy_ortiz@dlsu.edu.ph",
-    "password": "iLoveChikkieNuggies123", 
+    "password": "iLoveChikkieNuggies123!", 
     "role": "user", 
     "profPic": "", 
-    "profDesc": "DLSU ID 123 BS-IT" 
+    "profDesc": "DLSU ID 123 BS-IT",
+    "securityQuestion": "What is your favorite food?",
+    "securityAnswer": "Pizza"
   },
   { 
     "fName": "Maricarmen", 
@@ -17,7 +19,9 @@
     "password": "L0K1MYL0VE<33", 
     "role": "user", 
     "profPic": "", 
-    "profDesc": "DLSU ID 121 BSCS-ST" 
+    "profDesc": "DLSU ID 121 BSCS-ST",
+    "securityQuestion": "What is your grandmother's first name?",
+    "securityAnswer": "Maria"
   },
   { 
     "fName": "Amadeo", 
@@ -27,7 +31,9 @@
     "password": "M4R1CARM3N_4_L1F3!", 
     "role": "user", 
     "profPic": "", 
-    "profDesc": "DLSU ID 122 BSCS-ST" 
+    "profDesc": "DLSU ID 122 BSCS-ST",
+    "securityQuestion": "What is your favorite food?",
+    "securityAnswer": "Sushi"
   },
   { 
     "fName": "Daisy", 
@@ -37,7 +43,9 @@
     "password": "P4SSW0RD123456!", 
     "role": "user", 
     "profPic": "", 
-    "profDesc": "DLSU ID 124 BSCS-NIS" 
+    "profDesc": "DLSU ID 124 BSCS-NIS",
+    "securityQuestion": "What is your grandmother's first name?",
+    "securityAnswer": "Rosa"
   },
   { 
     "fName": "Laurissa", 
@@ -47,7 +55,9 @@
     "password": "insertPasswordH3R3", 
     "role": "moderator", 
     "profPic": "", 
-    "profDesc": "DLSU ID 121 BS-IT" 
+    "profDesc": "DLSU ID 121 BS-IT",
+    "securityQuestion": "What is your favorite food?",
+    "securityAnswer": "Chocolate"
   },
   { 
     "fName": "Loki", 
@@ -57,6 +67,8 @@
     "password": "THORisF4T!!!", 
     "role": "admin",
     "profPic": "/Assets/images/technician.png", 
-    "profDesc": "Reservation Technician" 
+    "profDesc": "Reservation Technician",
+    "securityQuestion": "What is your grandmother's first name?",
+    "securityAnswer": "Hilda"
   }
 ]

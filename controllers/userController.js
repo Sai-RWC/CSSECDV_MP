@@ -2,6 +2,7 @@ const UserSchema = require('../models/Users');
 const ReserveSchema = require('../models/Reservations');
 // const logError = require('../middleware/logError');
 const logger = require('../utils/logger');
+const bcrypt = require('bcrypt');
 
 const timeLabels = require('../data/timeLabels');
 
@@ -390,6 +391,126 @@ exports.deleteAccount = async (req, res) => {
         // console.error('Delete Account Error:', error);
         logger.error(error.message);
         res.status(500).json({ error: 'Server error', details: error.message });
+    }
+};
+
+// /change-password
+exports.getChangePassword = (req, res) => {
+    res.render('change-password', {
+        title: 'Labubuddy | Change Password',
+        user: req.session.user
+    });
+};
+
+exports.postChangePassword = async (req, res) => {
+    const { currentPassword, newPassword, confirmPassword } = req.body;
+    const userId = req.session.user.id;
+
+    try {
+        const user = await UserSchema.findById(userId);
+        if (!user) {
+            return res.status(404).render('change-password', {
+                title: 'Labubuddy | Change Password',
+                user: req.session.user,
+                error: 'User not found'
+            });
+        }
+
+        // Check if password was changed recently (at least 1 day old)
+        if (user.pwDate) {
+            const oneDayAgo = new Date(Date.now() - 24 * 60 * 60 * 1000);
+            if (user.pwDate > oneDayAgo) {
+                return res.status(400).render('change-password', {
+                    title: 'Labubuddy | Change Password',
+                    user: req.session.user,
+                    error: 'Password change too recent. Please wait at least 1 day before changing your password again.'
+                });
+            }
+        }
+
+        // Verify old password
+        const isMatch = await bcrypt.compare(currentPassword, user.password);
+        if (!isMatch) {
+            return res.status(401).render('change-password', {
+                title: 'Labubuddy | Change Password',
+                user: req.session.user,
+                error: 'Incorrect current password'
+            });
+        }
+
+        // Check if new password matches confirmation
+        if (newPassword !== confirmPassword) {
+            return res.status(400).render('change-password', {
+                title: 'Labubuddy | Change Password',
+                user: req.session.user,
+                error: 'New password and confirmation do not match'
+            });
+        }
+
+        // Validate new password
+        const passwordPattern = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[\W_]).{8,28}$/;
+        if (!newPassword || !passwordPattern.test(newPassword)) {
+            return res.status(400).render('change-password', {
+                title: 'Labubuddy | Change Password',
+                user: req.session.user,
+                error: 'New password must be 8 to 28 characters and include uppercase, lowercase, number, and special character'
+            });
+        }
+
+        // Prevent reuse of the current password
+        const isCurrentMatch = await bcrypt.compare(newPassword, user.password);
+        if (isCurrentMatch) {
+            return res.status(400).render('change-password', {
+                title: 'Labubuddy | Change Password',
+                user: req.session.user,
+                error: 'New password cannot be the same as your current password or a previously used password'
+            });
+        }
+
+        // Check against password history
+        if (user.prevPass && user.prevPass.length > 0) {
+            for (const oldPass of user.prevPass) {
+                const isOldMatch = await bcrypt.compare(newPassword, oldPass);
+                if (isOldMatch) {
+                    return res.status(400).render('change-password', {
+                        title: 'Labubuddy | Change Password',
+                        user: req.session.user,
+                        error: 'New password cannot be the same as your current password or a previously used password'
+                    });
+                }
+            }
+        }
+
+        // Hash new password
+        const hashedPassword = await bcrypt.hash(newPassword, 10);
+
+        // Update password history
+        if (!user.prevPass) user.prevPass = [];
+        user.prevPass.unshift(user.password); // Add current password to history
+        if (user.prevPass.length > 3) user.prevPass = user.prevPass.slice(0, 3); // Keep only last 3
+
+        // Update password and date
+        user.password = hashedPassword;
+        user.pwDate = new Date();
+        user.numAttempts = 0;
+        user.isLocked = false;
+        await user.save();
+
+        logger.info('Password changed', { id: user._id });
+
+        res.render('change-password', {
+            title: 'Labubuddy | Change Password',
+            user: req.session.user,
+            success: 'Password changed successfully'
+        });
+
+    } catch (error) {
+        logger.error(error.message);
+        res.status(500).render('change-password', {
+            title: 'Labubuddy | Change Password',
+            user: req.session.user,
+            error: 'Server error'
+        });
     }
 };
 

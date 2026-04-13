@@ -4,3 +4,7 @@
 {"level":"error","message":"Cannot read properties of undefined (reading 'user')","timestamp":"2026-04-12T17:11:37.611Z"}
 {"level":"error","message":"Cannot read properties of undefined (reading 'user')","timestamp":"2026-04-12T17:13:44.940Z"}
 {"level":"error","message":"Cannot read properties of undefined (reading 'user')","timestamp":"2026-04-12T17:14:22.158Z"}
+{"level":"error","message":"req.flash is not a function","timestamp":"2026-04-13T19:21:53.029Z"}
+{"level":"error","message":"req.flash is not a function","timestamp":"2026-04-13T19:21:56.589Z"}
+{"level":"error","message":"req.flash is not a function","timestamp":"2026-04-13T19:22:03.537Z"}
+{"level":"error","message":"req.flash is not a function","timestamp":"2026-04-13T19:24:44.125Z"}

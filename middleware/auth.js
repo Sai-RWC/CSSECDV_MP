@@ -9,7 +9,7 @@ exports.isAuthenticated = (req, res, next) => {
 };
 
 exports.isStudent = (req, res, next) => {
-    if (req.session?.user && req.session.role === 'user') {
+    if (req.session?.user && req.session.user.role === 'user') {
         return next();
     }
     logger.warn('Unauthorized Access Attempt', { url: req.url, ip: req.ip, id: req.session?.user?.id });

@@ -11,6 +11,9 @@ router.get('/profile/:email', isAuthenticated, userController.getViewProfileTech
 router.get('/editprofile', isAuthenticated, userController.getEditProfile);
 router.post('/editprofile', isAuthenticated, userController.uploadProfilePicture, userController.postEditProfile);
 
+router.get('/change-password', isAuthenticated, userController.getChangePassword);
+router.post('/change-password', isAuthenticated, userController.postChangePassword);
+
 router.get('/searchusers', isAuthenticated, userController.getSearchUsers);
 router.post('/searchusers', isAuthenticated, userController.postSearchUsers);
 

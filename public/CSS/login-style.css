@@ -8,3 +8,23 @@ body {
 .logo-title {
   font-family: 'Dongle', sans-serif;
 }
+
+.error-message {
+  color: #ff6b6b;
+  background-color: rgba(255, 107, 107, 0.1);
+  border: 1px solid #ff6b6b;
+  padding: 10px;
+  border-radius: 5px;
+  margin-bottom: 15px;
+  text-align: center;
+}
+
+.success-message {
+  color: #51cf66;
+  background-color: rgba(81, 207, 102, 0.1);
+  border: 1px solid #51cf66;
+  padding: 10px;
+  border-radius: 5px;
+  margin-bottom: 15px;
+  text-align: center;
+}

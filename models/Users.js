@@ -48,7 +48,15 @@ const userSchema = new mongoose.Schema({
         type: Date,
     },
     profPic: String,
-    profDesc: String
+    profDesc: String,
+    securityQuestion: {
+        type: String,
+        required: false
+    },
+    securityAnswer: {
+        type: String,
+        required: false
+    }
 });
 
 module.exports = mongoose.model('User', userSchema);

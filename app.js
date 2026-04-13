@@ -35,6 +35,15 @@ app.use((req, res, next) => {
   next();
 });
 
+app.use(flash());                
+app.use((req, res, next) => {   
+    const successMsgs = req.flash('success');
+    const errorMsgs = req.flash('error');
+    res.locals.flashSuccess = successMsgs.length ? successMsgs[0] : null;
+    res.locals.flashError   = errorMsgs.length ? errorMsgs[0] : null;
+    next();
+});
+
 // Routes
 // app.use('/', pageRoutes);
 app.use('/', authRoutes);
@@ -43,12 +52,12 @@ app.use('/', reservationRoutes);
 app.use('/', iframeRoutes);
 app.use('/', adminRoutes);
 
-app.use(flash());                
-
-app.use((req, res, next) => {   
-    res.locals.flashSuccess = req.flash('success');
-    res.locals.flashError   = req.flash('error');
-    next();
+app.use((err, req, res, next) => {
+  logger.error(err.stack || err.message);
+  res.status(500).render('error', {
+    title: 'Server Error',
+    message: 'An unexpected error occurred. Please try again later.'
+  });
 });
 
 // MongoDB connection
